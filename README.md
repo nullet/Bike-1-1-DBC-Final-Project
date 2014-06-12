@@ -1,6 +1,8 @@
 ![Build Status](https://travis-ci.org/ieatkimchi/Bike-1-1.svg?branch=master)
 [![Coverage Status](https://img.shields.io/coveralls/ieatkimchi/Bike-1-1.svg)](https://coveralls.io/r/ieatkimchi/Bike-1-1)
 Bike-1-1
+
+![http://imgur.com/875Dckg](http://imgur.com/875Dckg.png)
 ========
 
 Bike assistance app Bike-1-1
