@@ -29,8 +29,11 @@ gem 'spring',        group: :development
 # Add Coveralls to project
 gem 'coveralls', require: false
 
+gem 'devise'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
+  gem 'capybara'
 end
 
 # group :test do
