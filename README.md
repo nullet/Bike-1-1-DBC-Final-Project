@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/ieatkimchi/Bike-1-1.svg?branch=master)
+
 Bike-1-1
 ========
 
