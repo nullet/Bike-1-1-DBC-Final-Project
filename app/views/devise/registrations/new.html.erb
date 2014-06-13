@@ -3,6 +3,9 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <div><%= f.label :name %><br />
+    <%= f.text_field :name, autocomplete: "off" %></div>
+
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
@@ -12,23 +15,12 @@
   <div><%= f.label :password_confirmation %><br />
     <%= f.text_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.label :name %><br />
-    <%= f.text_field :name, autocomplete: "off" %></div>
-
   <div><%= f.label :phone %><br />
     <%= f.text_field :phone, autocomplete: "off" %></div>
 
-  <div><%= f.label :karma_count %><br />
-    <%= f.text_field :karma_count, autocomplete: "off" %></div>
+  <div><%= f.label :home_base %><br />
+    <%= f.text_field :home_base, autocomplete: "off" %></div>
 
-  <div><%= f.label :hb_latitude %><br />
-    <%= f.text_field :hb_latitude, autocomplete: "off" %></div>
-
-  <div><%= f.label :hb_latitude %><br />
-    <%= f.text_field :hb_latitude, autocomplete: "off" %></div>
-
-  <div><%= f.label :hb_radius %><br />
-    <%= f.text_field :hb_radius, autocomplete: "off" %></div>
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
