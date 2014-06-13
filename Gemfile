@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # User auth suite
-gem 'devise'
+# gem 'devise'
 
 # Add Coveralls to project
 gem 'coveralls', require: false
