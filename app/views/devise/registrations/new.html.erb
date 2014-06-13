@@ -10,8 +10,25 @@
     <%= f.password_field :password, autocomplete: "off" %></div>
 
   <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <%= f.text_field :password_confirmation, autocomplete: "off" %></div>
 
+  <div><%= f.label :name %><br />
+    <%= f.text_field :name, autocomplete: "off" %></div>
+
+  <div><%= f.label :phone %><br />
+    <%= f.text_field :phone, autocomplete: "off" %></div>
+
+  <div><%= f.label :karma_count %><br />
+    <%= f.text_field :karma_count, autocomplete: "off" %></div>
+
+  <div><%= f.label :hb_latitude %><br />
+    <%= f.text_field :hb_latitude, autocomplete: "off" %></div>
+
+  <div><%= f.label :hb_latitude %><br />
+    <%= f.text_field :hb_latitude, autocomplete: "off" %></div>
+
+  <div><%= f.label :hb_radius %><br />
+    <%= f.text_field :hb_radius, autocomplete: "off" %></div>
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 

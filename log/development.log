@@ -610,3 +610,157 @@ Migrating to CreateEvents (20140613204008)
   [1m[35m (0.5ms)[0m  SELECT version FROM "schema_migrations"
   [1m[36m (1.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140613204008')[0m
   [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140612152141')
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 15:54:39 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 80ms (Views: 67.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 15:54:39 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 15:54:39 -0500
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 15:54:39 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 15:54:39 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 15:54:39 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 15:54:39 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 15:54:39 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 15:54:39 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 15:54:39 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 15:54:39 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-13 15:54:41 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (82.4ms)
+Completed 200 OK in 100ms (Views: 87.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-13 15:55:50 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 15:55:50 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 15:55:50 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 15:55:50 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 15:55:50 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 15:55:50 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 15:55:50 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 15:55:50 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 15:55:50 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 15:55:50 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 15:55:50 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-13 15:56:30 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 15:56:30 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:30 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:30 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 15:56:30 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 15:56:30 -0500
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 15:56:30 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:30 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:30 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:30 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:30 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 15:56:36 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 15:56:36 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 15:56:36 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 15:56:36 -0500
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 15:56:36 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:36 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:36 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:36 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:36 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:36 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:36 -0500
