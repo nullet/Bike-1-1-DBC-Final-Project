@@ -59,3 +59,5 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# User auth, including BCrypt
+gem 'devise'
