@@ -26,14 +26,20 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# User auth suite
+gem 'devise'
+
 # Add Coveralls to project
 gem 'coveralls', require: false
 
-gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'capybara'
+end
+
+group :test do
+  gem 'shoulda-matchers', require: false
 end
 
 # group :test do
