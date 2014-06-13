@@ -11,7 +11,7 @@ describe User do
 
   it { should have_db_column(:name) }
   it { should have_db_column(:email) }
-  it { should have_db_column(:password) }
+  it { should have_db_column(:encrypted_password) }
   it { should have_db_column(:phone) }
   it { should have_db_column(:hb_latitude) }
   it { should have_db_column(:hb_longitude) }

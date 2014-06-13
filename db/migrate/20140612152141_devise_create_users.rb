@@ -3,7 +3,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       t.string  :name
       t.integer :phone
-
+      t.integer :karma_count
+      t.string  :home_base
+      t.float   :hb_latitude
+      t.float   :hb_longitude
+      t.float   :hb_radius
       #### Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
