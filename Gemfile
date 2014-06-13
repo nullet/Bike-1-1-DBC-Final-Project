@@ -32,6 +32,7 @@ gem 'devise'
 # Add Coveralls to project
 gem 'coveralls', require: false
 
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
