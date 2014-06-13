@@ -967,3 +967,549 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 15:56:36
   [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "events"  WHERE "events"."responder_id" = $1  [["responder_id", 5]]
   [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 3]]
   [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "events"  WHERE "events"."responder_id" = $1  [["responder_id", 3]]
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (20.0ms)[0m  CREATE TABLE "events" ("id" serial primary key, "requester_id" integer, "responder_id" integer, "latitude" float, "longitude" float, "active" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (4.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "phone" integer, "karma_count" integer, "home_base" character varying(255), "hb_latitude" float, "hb_longitude" float, "hb_radius" float, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140613204008')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140612152141')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'tom@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:02:34.336574"], ["email", "tom@dbc.com"], ["encrypted_password", "$2a$10$RGPPREK2UCasUszb6UgLxekTPLRYnjZcf5WJlRecXOJoghnvLqfom"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "tom"], ["phone", 2131231239], ["updated_at", "2014-06-13 22:02:34.336574"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'paige@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:02:34.418138"], ["email", "paige@dbc.com"], ["encrypted_password", "$2a$10$M16Ud73Mvq7z99UsMqfo0us0.R0Kgv9OK60bCDekG379hmAzCTc5."], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "paige"], ["phone", 2131231237], ["updated_at", "2014-06-13 22:02:34.418138"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'rob@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:02:34.499544"], ["email", "rob@dbc.com"], ["encrypted_password", "$2a$10$/7gHyP0e2t/GNQ4fNkFdaeZKRcTra5a8hglnUbkmcxQGnjJUAUUZ6"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "robb"], ["phone", 2131231231], ["updated_at", "2014-06-13 22:02:34.499544"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'nate@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:02:34.580025"], ["email", "nate@dbc.com"], ["encrypted_password", "$2a$10$KL7OP2n.qznkAdU1CNS0GuB2SgEp2cnUWlzVkdUdKbjQlHTZTaVE2"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "nate"], ["phone", 2131231233], ["updated_at", "2014-06-13 22:02:34.580025"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jaredmdaugherty@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:02:34.660466"], ["email", "jaredmdaugherty@gmail.com"], ["encrypted_password", "$2a$10$yaDEXHXEbStsRYmZTcN3b.3mqdCo1YGNdZgqSRNi0K7Z4QqnVeg6O"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "1829 n orchard"], ["karma_count", 0], ["name", "jared"], ["phone", 2131231234], ["updated_at", "2014-06-13 22:02:34.660466"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.673540"], ["latitude", 41.56842], ["longitude", -87.176626], ["requester_id", 2], ["responder_id", 4], ["updated_at", "2014-06-13 22:02:34.673540"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.676862"], ["latitude", 41.99908], ["longitude", -87.788527], ["requester_id", 4], ["responder_id", 1], ["updated_at", "2014-06-13 22:02:34.676862"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.679348"], ["latitude", 41.46462], ["longitude", -87.924411], ["requester_id", 5], ["responder_id", 1], ["updated_at", "2014-06-13 22:02:34.679348"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.682070"], ["latitude", 41.080679], ["longitude", -87.61627], ["requester_id", 5], ["responder_id", 4], ["updated_at", "2014-06-13 22:02:34.682070"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.684016"], ["latitude", 41.495295], ["longitude", -87.567087], ["requester_id", 1], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.684016"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.685780"], ["latitude", 41.548113], ["longitude", -87.308077], ["requester_id", 5], ["responder_id", 3], ["updated_at", "2014-06-13 22:02:34.685780"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.687595"], ["latitude", 41.485593], ["longitude", -87.087422], ["requester_id", 4], ["responder_id", 1], ["updated_at", "2014-06-13 22:02:34.687595"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.689340"], ["latitude", 41.332219], ["longitude", -87.528897], ["requester_id", 3], ["responder_id", 4], ["updated_at", "2014-06-13 22:02:34.689340"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.691167"], ["latitude", 41.266487], ["longitude", -87.666758], ["requester_id", 2], ["responder_id", 5], ["updated_at", "2014-06-13 22:02:34.691167"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.692901"], ["latitude", 41.803517], ["longitude", -87.486953], ["requester_id", 4], ["responder_id", 3], ["updated_at", "2014-06-13 22:02:34.692901"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.694668"], ["latitude", 41.237123], ["longitude", -87.001913], ["requester_id", 5], ["responder_id", 1], ["updated_at", "2014-06-13 22:02:34.694668"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.696341"], ["latitude", 41.797934], ["longitude", -87.638211], ["requester_id", 2], ["responder_id", 5], ["updated_at", "2014-06-13 22:02:34.696341"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.698259"], ["latitude", 41.085858], ["longitude", -87.617928], ["requester_id", 3], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.698259"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.700062"], ["latitude", 41.365966], ["longitude", -87.973987], ["requester_id", 4], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.700062"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.701891"], ["latitude", 41.174514], ["longitude", -87.673498], ["requester_id", 3], ["responder_id", 4], ["updated_at", "2014-06-13 22:02:34.701891"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.703691"], ["latitude", 41.474258], ["longitude", -87.79308], ["requester_id", 1], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.703691"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.705410"], ["latitude", 41.406516], ["longitude", -87.823983], ["requester_id", 5], ["responder_id", 3], ["updated_at", "2014-06-13 22:02:34.705410"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.707159"], ["latitude", 41.286406], ["longitude", -87.319765], ["requester_id", 5], ["responder_id", 4], ["updated_at", "2014-06-13 22:02:34.707159"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.708857"], ["latitude", 41.451423], ["longitude", -87.748443], ["requester_id", 3], ["responder_id", 4], ["updated_at", "2014-06-13 22:02:34.708857"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.710588"], ["latitude", 41.214443], ["longitude", -87.031964], ["requester_id", 3], ["responder_id", 1], ["updated_at", "2014-06-13 22:02:34.710588"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.712740"], ["latitude", 41.744821], ["longitude", -87.227907], ["requester_id", 4], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.712740"]]
+  [1m[35m (5.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.720745"], ["latitude", 41.42138], ["longitude", -87.97661], ["requester_id", 3], ["responder_id", 1], ["updated_at", "2014-06-13 22:02:34.720745"]]
+  [1m[36m (5.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.728569"], ["latitude", 41.625158], ["longitude", -87.19626], ["requester_id", 5], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.728569"]]
+  [1m[35m (5.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.736281"], ["latitude", 41.04361], ["longitude", -87.345247], ["requester_id", 5], ["responder_id", 3], ["updated_at", "2014-06-13 22:02:34.736281"]]
+  [1m[36m (5.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.744003"], ["latitude", 41.840619], ["longitude", -87.360355], ["requester_id", 1], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.744003"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.747233"], ["latitude", 41.257757], ["longitude", -87.004275], ["requester_id", 3], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.747233"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.750344"], ["latitude", 41.838751], ["longitude", -87.879872], ["requester_id", 5], ["responder_id", 3], ["updated_at", "2014-06-13 22:02:34.750344"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.752219"], ["latitude", 41.819561], ["longitude", -87.145992], ["requester_id", 3], ["responder_id", 4], ["updated_at", "2014-06-13 22:02:34.752219"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.753986"], ["latitude", 41.220162], ["longitude", -87.866947], ["requester_id", 4], ["responder_id", 1], ["updated_at", "2014-06-13 22:02:34.753986"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.755744"], ["latitude", 41.283557], ["longitude", -87.563147], ["requester_id", 2], ["responder_id", 5], ["updated_at", "2014-06-13 22:02:34.755744"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.757646"], ["latitude", 41.722632], ["longitude", -87.329378], ["requester_id", 3], ["responder_id", 1], ["updated_at", "2014-06-13 22:02:34.757646"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.759546"], ["latitude", 41.266656], ["longitude", -87.825579], ["requester_id", 2], ["responder_id", 5], ["updated_at", "2014-06-13 22:02:34.759546"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.761861"], ["latitude", 41.540027], ["longitude", -87.077199], ["requester_id", 3], ["responder_id", 4], ["updated_at", "2014-06-13 22:02:34.761861"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.763988"], ["latitude", 41.999573], ["longitude", -87.767977], ["requester_id", 1], ["responder_id", 3], ["updated_at", "2014-06-13 22:02:34.763988"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.766600"], ["latitude", 41.013678], ["longitude", -87.453955], ["requester_id", 4], ["responder_id", 1], ["updated_at", "2014-06-13 22:02:34.766600"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.768589"], ["latitude", 41.690438], ["longitude", -87.072883], ["requester_id", 5], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.768589"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.771107"], ["latitude", 41.215796], ["longitude", -87.589499], ["requester_id", 1], ["responder_id", 5], ["updated_at", "2014-06-13 22:02:34.771107"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.773683"], ["latitude", 41.775331], ["longitude", -87.032889], ["requester_id", 1], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.773683"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.775790"], ["latitude", 41.018654], ["longitude", -87.499945], ["requester_id", 3], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.775790"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.777901"], ["latitude", 41.919537], ["longitude", -87.863132], ["requester_id", 1], ["responder_id", 4], ["updated_at", "2014-06-13 22:02:34.777901"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.780360"], ["latitude", 41.132089], ["longitude", -87.829599], ["requester_id", 1], ["responder_id", 3], ["updated_at", "2014-06-13 22:02:34.780360"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.782771"], ["latitude", 41.658173], ["longitude", -87.018887], ["requester_id", 4], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.782771"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.784997"], ["latitude", 41.20702], ["longitude", -87.518091], ["requester_id", 2], ["responder_id", 3], ["updated_at", "2014-06-13 22:02:34.784997"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.786973"], ["latitude", 41.568138], ["longitude", -87.313643], ["requester_id", 2], ["responder_id", 3], ["updated_at", "2014-06-13 22:02:34.786973"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.789180"], ["latitude", 41.750578], ["longitude", -87.779016], ["requester_id", 2], ["responder_id", 3], ["updated_at", "2014-06-13 22:02:34.789180"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.790938"], ["latitude", 41.651596], ["longitude", -87.154567], ["requester_id", 4], ["responder_id", 3], ["updated_at", "2014-06-13 22:02:34.790938"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.792951"], ["latitude", 41.895253], ["longitude", -87.103182], ["requester_id", 4], ["responder_id", 5], ["updated_at", "2014-06-13 22:02:34.792951"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.795495"], ["latitude", 41.592031], ["longitude", -87.107818], ["requester_id", 5], ["responder_id", 2], ["updated_at", "2014-06-13 22:02:34.795495"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:02:34.797567"], ["latitude", 41.202317], ["longitude", -87.558464], ["requester_id", 1], ["responder_id", 4], ["updated_at", "2014-06-13 22:02:34.797567"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:02:34.799975"], ["latitude", 41.918874], ["longitude", -87.692718], ["requester_id", 2], ["responder_id", 1], ["updated_at", "2014-06-13 22:02:34.799975"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[36mEvent Load (2.6ms)[0m  [1mSELECT  "events".* FROM "events"   ORDER BY "events"."id" ASC LIMIT 1[0m
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (28.6ms)[0m  CREATE TABLE "events" ("id" serial primary key, "requester_id" integer, "responder_id" integer, "latitude" float, "longitude" float, "active" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (24.6ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "phone" integer, "karma_count" integer, "home_base" character varying(255), "hb_latitude" float, "hb_longitude" float, "hb_radius" float, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (12.1ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (11.1ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140613204008')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140612152141')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'tom@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (23.5ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:06:26.321369"], ["email", "tom@dbc.com"], ["encrypted_password", "$2a$10$yKNPTcZb0saixl.xbe4weua5s6aQyqa/62tsZ/6ypad0L4G5666.G"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "tom"], ["phone", 2131231239], ["updated_at", "2014-06-13 22:06:26.321369"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'paige@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:06:26.430123"], ["email", "paige@dbc.com"], ["encrypted_password", "$2a$10$nmBcBRZPeNl9Z94bM439nO/xxwhL5vcdukB4cC3puTR48yYa1X.ue"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "paige"], ["phone", 2131231237], ["updated_at", "2014-06-13 22:06:26.430123"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'rob@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:06:26.509074"], ["email", "rob@dbc.com"], ["encrypted_password", "$2a$10$FN1zNP2IgJk2B9gRoWJuhu.w9GGLu2/A6CmuiA//AwMB.1C6ZZaTS"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "robb"], ["phone", 2131231231], ["updated_at", "2014-06-13 22:06:26.509074"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'nate@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:06:26.590684"], ["email", "nate@dbc.com"], ["encrypted_password", "$2a$10$VKKrHXIov9kK7gjAecbYvuedZS3eJlH2SS9GiPOiANOQFC2PVCjr2"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "nate"], ["phone", 2131231233], ["updated_at", "2014-06-13 22:06:26.590684"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jaredmdaugherty@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:06:26.672704"], ["email", "jaredmdaugherty@gmail.com"], ["encrypted_password", "$2a$10$71ApfthD/JTpPLfbLHsf7.VbALgzj71ad0K3jTQ/CZanszQPPfmmO"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "1829 n orchard"], ["karma_count", 0], ["name", "jared"], ["phone", 2131231234], ["updated_at", "2014-06-13 22:06:26.672704"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (6.4ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.688716"], ["latitude", 41.802679], ["longitude", -87.756197], ["requester_id", 3], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.688716"]]
+  [1m[35m (6.0ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.703381"], ["latitude", 42.010005], ["longitude", -87.633555], ["requester_id", 3], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.703381"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.705423"], ["latitude", 41.814268999999996], ["longitude", -87.72479999999999], ["requester_id", 4], ["responder_id", 1], ["updated_at", "2014-06-13 22:06:26.705423"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.707328"], ["latitude", 42.038627], ["longitude", -87.787064], ["requester_id", 2], ["responder_id", 4], ["updated_at", "2014-06-13 22:06:26.707328"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.709114"], ["latitude", 42.087736], ["longitude", -88.038899], ["requester_id", 3], ["responder_id", 1], ["updated_at", "2014-06-13 22:06:26.709114"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.710863"], ["latitude", 42.190152], ["longitude", -87.95311099999999], ["requester_id", 2], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.710863"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.712697"], ["latitude", 42.048080999999996], ["longitude", -88.061695], ["requester_id", 4], ["responder_id", 1], ["updated_at", "2014-06-13 22:06:26.712697"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.714422"], ["latitude", 42.078247], ["longitude", -87.80119499999999], ["requester_id", 1], ["responder_id", 4], ["updated_at", "2014-06-13 22:06:26.714422"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.716246"], ["latitude", 41.980450999999995], ["longitude", -87.767754], ["requester_id", 2], ["responder_id", 1], ["updated_at", "2014-06-13 22:06:26.716246"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.718103"], ["latitude", 41.863141], ["longitude", -87.96067], ["requester_id", 3], ["responder_id", 2], ["updated_at", "2014-06-13 22:06:26.718103"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.719790"], ["latitude", 42.122223999999996], ["longitude", -87.64267299999999], ["requester_id", 5], ["responder_id", 4], ["updated_at", "2014-06-13 22:06:26.719790"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.721512"], ["latitude", 42.263213], ["longitude", -87.78947099999999], ["requester_id", 1], ["responder_id", 4], ["updated_at", "2014-06-13 22:06:26.721512"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.723305"], ["latitude", 42.296521], ["longitude", -87.74291299999999], ["requester_id", 4], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.723305"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.725017"], ["latitude", 41.977799999999995], ["longitude", -88.048762], ["requester_id", 3], ["responder_id", 1], ["updated_at", "2014-06-13 22:06:26.725017"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.726738"], ["latitude", 41.820968], ["longitude", -87.890913], ["requester_id", 4], ["responder_id", 2], ["updated_at", "2014-06-13 22:06:26.726738"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.728450"], ["latitude", 41.982062], ["longitude", -87.883843], ["requester_id", 3], ["responder_id", 4], ["updated_at", "2014-06-13 22:06:26.728450"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.730239"], ["latitude", 41.945693999999996], ["longitude", -87.85508999999999], ["requester_id", 3], ["responder_id", 2], ["updated_at", "2014-06-13 22:06:26.730239"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.732049"], ["latitude", 42.111518], ["longitude", -88.09659599999999], ["requester_id", 5], ["responder_id", 1], ["updated_at", "2014-06-13 22:06:26.732049"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.733904"], ["latitude", 42.064347999999995], ["longitude", -88.083996], ["requester_id", 2], ["responder_id", 3], ["updated_at", "2014-06-13 22:06:26.733904"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.735564"], ["latitude", 42.12549], ["longitude", -87.804367], ["requester_id", 2], ["responder_id", 3], ["updated_at", "2014-06-13 22:06:26.735564"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.737359"], ["latitude", 42.272363999999996], ["longitude", -87.934738], ["requester_id", 1], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.737359"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.739318"], ["latitude", 42.166338999999994], ["longitude", -88.00753599999999], ["requester_id", 3], ["responder_id", 2], ["updated_at", "2014-06-13 22:06:26.739318"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.741225"], ["latitude", 41.889779999999995], ["longitude", -88.01347399999999], ["requester_id", 3], ["responder_id", 4], ["updated_at", "2014-06-13 22:06:26.741225"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.743087"], ["latitude", 41.884218], ["longitude", -87.85055799999999], ["requester_id", 1], ["responder_id", 4], ["updated_at", "2014-06-13 22:06:26.743087"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.744950"], ["latitude", 41.922979], ["longitude", -87.966168], ["requester_id", 5], ["responder_id", 3], ["updated_at", "2014-06-13 22:06:26.744950"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.746844"], ["latitude", 42.27433], ["longitude", -87.738901], ["requester_id", 2], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.746844"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.748635"], ["latitude", 42.061401999999994], ["longitude", -87.621681], ["requester_id", 4], ["responder_id", 2], ["updated_at", "2014-06-13 22:06:26.748635"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.750393"], ["latitude", 42.043406], ["longitude", -88.03029699999999], ["requester_id", 1], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.750393"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.752247"], ["latitude", 42.214924999999994], ["longitude", -88.036493], ["requester_id", 5], ["responder_id", 4], ["updated_at", "2014-06-13 22:06:26.752247"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.754011"], ["latitude", 41.985231], ["longitude", -87.90049599999999], ["requester_id", 3], ["responder_id", 4], ["updated_at", "2014-06-13 22:06:26.754011"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.755783"], ["latitude", 42.154554999999995], ["longitude", -88.01751399999999], ["requester_id", 1], ["responder_id", 3], ["updated_at", "2014-06-13 22:06:26.755783"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.757650"], ["latitude", 42.036941999999996], ["longitude", -87.73896099999999], ["requester_id", 4], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.757650"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.759418"], ["latitude", 41.807677999999996], ["longitude", -87.67645599999999], ["requester_id", 2], ["responder_id", 1], ["updated_at", "2014-06-13 22:06:26.759418"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.761248"], ["latitude", 42.094384], ["longitude", -87.925727], ["requester_id", 3], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.761248"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.763012"], ["latitude", 42.18295], ["longitude", -87.827112], ["requester_id", 5], ["responder_id", 1], ["updated_at", "2014-06-13 22:06:26.763012"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.764758"], ["latitude", 41.950083], ["longitude", -87.973315], ["requester_id", 4], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.764758"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.766603"], ["latitude", 41.871164], ["longitude", -88.05644699999999], ["requester_id", 2], ["responder_id", 3], ["updated_at", "2014-06-13 22:06:26.766603"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.768353"], ["latitude", 42.196932999999994], ["longitude", -87.77994199999999], ["requester_id", 2], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.768353"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.770166"], ["latitude", 41.943805999999995], ["longitude", -88.09793499999999], ["requester_id", 3], ["responder_id", 2], ["updated_at", "2014-06-13 22:06:26.770166"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.772050"], ["latitude", 41.966699999999996], ["longitude", -87.66986299999999], ["requester_id", 2], ["responder_id", 1], ["updated_at", "2014-06-13 22:06:26.772050"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.773927"], ["latitude", 42.299116999999995], ["longitude", -87.688874], ["requester_id", 2], ["responder_id", 3], ["updated_at", "2014-06-13 22:06:26.773927"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.776408"], ["latitude", 42.083478], ["longitude", -87.78219899999999], ["requester_id", 3], ["responder_id", 2], ["updated_at", "2014-06-13 22:06:26.776408"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.778403"], ["latitude", 42.265702999999995], ["longitude", -87.793044], ["requester_id", 5], ["responder_id", 3], ["updated_at", "2014-06-13 22:06:26.778403"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.780177"], ["latitude", 42.176688999999996], ["longitude", -87.609594], ["requester_id", 3], ["responder_id", 4], ["updated_at", "2014-06-13 22:06:26.780177"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.782668"], ["latitude", 41.890283999999994], ["longitude", -88.08904299999999], ["requester_id", 5], ["responder_id", 1], ["updated_at", "2014-06-13 22:06:26.782668"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.784893"], ["latitude", 41.962543999999994], ["longitude", -88.044327], ["requester_id", 1], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.784893"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.786937"], ["latitude", 42.127835999999995], ["longitude", -88.05626199999999], ["requester_id", 5], ["responder_id", 1], ["updated_at", "2014-06-13 22:06:26.786937"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.788910"], ["latitude", 42.192282], ["longitude", -87.91541], ["requester_id", 1], ["responder_id", 5], ["updated_at", "2014-06-13 22:06:26.788910"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:06:26.790836"], ["latitude", 41.863397], ["longitude", -87.740831], ["requester_id", 3], ["responder_id", 2], ["updated_at", "2014-06-13 22:06:26.790836"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:06:26.793064"], ["latitude", 42.073074], ["longitude", -87.667069], ["requester_id", 1], ["responder_id", 2], ["updated_at", "2014-06-13 22:06:26.793064"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[36mEvent Load (1.6ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (21.7ms)[0m  CREATE TABLE "events" ("id" serial primary key, "requester_id" integer, "responder_id" integer, "latitude" float, "longitude" float, "active" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (5.3ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "phone" integer, "karma_count" integer, "home_base" character varying(255), "hb_latitude" float, "hb_longitude" float, "hb_radius" float, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140613204008')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140612152141')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'tom@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:09:05.940735"], ["email", "tom@dbc.com"], ["encrypted_password", "$2a$10$lxJbbBDQ/lv/bursj0af7eut8zfOsMQasl3BOb4xPwO5GDF4.6cwe"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "tom"], ["phone", 2131231239], ["updated_at", "2014-06-13 22:09:05.940735"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'paige@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:09:06.025911"], ["email", "paige@dbc.com"], ["encrypted_password", "$2a$10$BO.vinT0eBYzmjUh8weNEeHLXI3ehWtSH4D9ltvPmVQFNGysRPGey"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "paige"], ["phone", 2131231237], ["updated_at", "2014-06-13 22:09:06.025911"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'rob@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:09:06.107721"], ["email", "rob@dbc.com"], ["encrypted_password", "$2a$10$ci4EHo7JsI1GpKSLx6UHfeQqVakl.xHhJYj9hnzEnbCxHnhxJQhlO"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "robb"], ["phone", 2131231231], ["updated_at", "2014-06-13 22:09:06.107721"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'nate@dbc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:09:06.188197"], ["email", "nate@dbc.com"], ["encrypted_password", "$2a$10$VLLBBmKXSjApXGf83Od5oO/eFgHyx0MMKB6yVak.QkpZ4kCMZLgqq"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "351 w hubbard"], ["karma_count", 0], ["name", "nate"], ["phone", 2131231233], ["updated_at", "2014-06-13 22:09:06.188197"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'jaredmdaugherty@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "hb_latitude", "hb_longitude", "hb_radius", "home_base", "karma_count", "name", "phone", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["created_at", "2014-06-13 22:09:06.268084"], ["email", "jaredmdaugherty@gmail.com"], ["encrypted_password", "$2a$10$VkudswK4DKzX6iT1oEX//OhWLVe/wCsv1.0SelZS.AONcRNjK6vjS"], ["hb_latitude", 41.889616], ["hb_longitude", -87.637211], ["hb_radius", 5000.0], ["home_base", "1829 n orchard"], ["karma_count", 0], ["name", "jared"], ["phone", 2131231234], ["updated_at", "2014-06-13 22:09:06.268084"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.280975"], ["latitude", 42.0590782], ["longitude", -87.7899352], ["requester_id", 1], ["responder_id", 3], ["updated_at", "2014-06-13 22:09:06.280975"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.284463"], ["latitude", 41.9757182], ["longitude", -87.7516644], ["requester_id", 3], ["responder_id", 5], ["updated_at", "2014-06-13 22:09:06.284463"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.286843"], ["latitude", 41.9034082], ["longitude", -87.6753246], ["requester_id", 1], ["responder_id", 2], ["updated_at", "2014-06-13 22:09:06.286843"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.288861"], ["latitude", 42.028124600000005], ["longitude", -87.8337502], ["requester_id", 2], ["responder_id", 5], ["updated_at", "2014-06-13 22:09:06.288861"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.290680"], ["latitude", 42.075164], ["longitude", -87.7519582], ["requester_id", 5], ["responder_id", 2], ["updated_at", "2014-06-13 22:09:06.290680"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.292584"], ["latitude", 42.047220800000005], ["longitude", -87.7348766], ["requester_id", 4], ["responder_id", 2], ["updated_at", "2014-06-13 22:09:06.292584"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.294387"], ["latitude", 41.961891800000004], ["longitude", -87.816894], ["requester_id", 3], ["responder_id", 5], ["updated_at", "2014-06-13 22:09:06.294387"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.296162"], ["latitude", 42.0453642], ["longitude", -87.8106252], ["requester_id", 2], ["responder_id", 4], ["updated_at", "2014-06-13 22:09:06.296162"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.297889"], ["latitude", 41.9829328], ["longitude", -87.7337644], ["requester_id", 3], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.297889"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.299690"], ["latitude", 41.8950134], ["longitude", -87.8096484], ["requester_id", 2], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.299690"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.301396"], ["latitude", 42.021510400000004], ["longitude", -87.8016662], ["requester_id", 4], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.301396"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.303186"], ["latitude", 41.982469800000004], ["longitude", -87.6892314], ["requester_id", 1], ["responder_id", 4], ["updated_at", "2014-06-13 22:09:06.303186"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.304900"], ["latitude", 41.929856400000006], ["longitude", -87.6940564], ["requester_id", 3], ["responder_id", 2], ["updated_at", "2014-06-13 22:09:06.304900"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.306677"], ["latitude", 41.942795200000006], ["longitude", -87.7282634], ["requester_id", 3], ["responder_id", 5], ["updated_at", "2014-06-13 22:09:06.306677"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.308360"], ["latitude", 41.979833600000006], ["longitude", -87.666108], ["requester_id", 3], ["responder_id", 4], ["updated_at", "2014-06-13 22:09:06.308360"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.310483"], ["latitude", 41.980736400000005], ["longitude", -87.825568], ["requester_id", 5], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.310483"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.312260"], ["latitude", 41.956911000000005], ["longitude", -87.6610186], ["requester_id", 2], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.312260"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.314054"], ["latitude", 42.082458200000005], ["longitude", -87.7670126], ["requester_id", 5], ["responder_id", 2], ["updated_at", "2014-06-13 22:09:06.314054"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.315840"], ["latitude", 41.8897844], ["longitude", -87.6795994], ["requester_id", 1], ["responder_id", 5], ["updated_at", "2014-06-13 22:09:06.315840"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.317538"], ["latitude", 41.999913], ["longitude", -87.6490614], ["requester_id", 5], ["responder_id", 2], ["updated_at", "2014-06-13 22:09:06.317538"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.319231"], ["latitude", 41.9668458], ["longitude", -87.6714256], ["requester_id", 3], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.319231"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.321451"], ["latitude", 41.971898], ["longitude", -87.783358], ["requester_id", 3], ["responder_id", 4], ["updated_at", "2014-06-13 22:09:06.321451"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.323328"], ["latitude", 41.9397236], ["longitude", -87.6579794], ["requester_id", 2], ["responder_id", 3], ["updated_at", "2014-06-13 22:09:06.323328"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.325126"], ["latitude", 41.9441268], ["longitude", -87.7476212], ["requester_id", 2], ["responder_id", 4], ["updated_at", "2014-06-13 22:09:06.325126"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.327922"], ["latitude", 42.066189200000004], ["longitude", -87.7069952], ["requester_id", 4], ["responder_id", 3], ["updated_at", "2014-06-13 22:09:06.327922"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.330065"], ["latitude", 41.950856400000006], ["longitude", -87.725937], ["requester_id", 2], ["responder_id", 4], ["updated_at", "2014-06-13 22:09:06.330065"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.331922"], ["latitude", 42.06931], ["longitude", -87.7300968], ["requester_id", 2], ["responder_id", 4], ["updated_at", "2014-06-13 22:09:06.331922"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.333831"], ["latitude", 41.954814400000004], ["longitude", -87.8133004], ["requester_id", 3], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.333831"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.335784"], ["latitude", 41.9380492], ["longitude", -87.7464966], ["requester_id", 2], ["responder_id", 5], ["updated_at", "2014-06-13 22:09:06.335784"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.337980"], ["latitude", 41.9620946], ["longitude", -87.712544], ["requester_id", 4], ["responder_id", 5], ["updated_at", "2014-06-13 22:09:06.337980"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.339883"], ["latitude", 41.956343000000004], ["longitude", -87.7684148], ["requester_id", 1], ["responder_id", 3], ["updated_at", "2014-06-13 22:09:06.339883"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.341687"], ["latitude", 41.9720008], ["longitude", -87.8031734], ["requester_id", 3], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.341687"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.343582"], ["latitude", 41.964351], ["longitude", -87.6974824], ["requester_id", 5], ["responder_id", 2], ["updated_at", "2014-06-13 22:09:06.343582"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.345401"], ["latitude", 41.965700000000005], ["longitude", -87.7819134], ["requester_id", 4], ["responder_id", 2], ["updated_at", "2014-06-13 22:09:06.345401"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.347183"], ["latitude", 42.020705400000004], ["longitude", -87.7262544], ["requester_id", 5], ["responder_id", 3], ["updated_at", "2014-06-13 22:09:06.347183"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.348977"], ["latitude", 42.021577400000005], ["longitude", -87.8355064], ["requester_id", 2], ["responder_id", 3], ["updated_at", "2014-06-13 22:09:06.348977"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.350849"], ["latitude", 42.0187522], ["longitude", -87.67986140000001], ["requester_id", 1], ["responder_id", 5], ["updated_at", "2014-06-13 22:09:06.350849"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.352615"], ["latitude", 41.952469], ["longitude", -87.827057], ["requester_id", 5], ["responder_id", 3], ["updated_at", "2014-06-13 22:09:06.352615"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.354410"], ["latitude", 41.963172], ["longitude", -87.7891646], ["requester_id", 1], ["responder_id", 2], ["updated_at", "2014-06-13 22:09:06.354410"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.356200"], ["latitude", 41.9954328], ["longitude", -87.73911820000001], ["requester_id", 5], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.356200"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.357984"], ["latitude", 41.8931108], ["longitude", -87.715494], ["requester_id", 4], ["responder_id", 5], ["updated_at", "2014-06-13 22:09:06.357984"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.359758"], ["latitude", 41.929124200000004], ["longitude", -87.81357440000001], ["requester_id", 1], ["responder_id", 3], ["updated_at", "2014-06-13 22:09:06.359758"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.361761"], ["latitude", 42.0120298], ["longitude", -87.7089076], ["requester_id", 4], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.361761"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.363561"], ["latitude", 41.951404000000004], ["longitude", -87.6825442], ["requester_id", 5], ["responder_id", 4], ["updated_at", "2014-06-13 22:09:06.363561"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.365375"], ["latitude", 41.8940666], ["longitude", -87.6408222], ["requester_id", 1], ["responder_id", 4], ["updated_at", "2014-06-13 22:09:06.365375"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.367134"], ["latitude", 42.05700280000001], ["longitude", -87.69072], ["requester_id", 4], ["responder_id", 5], ["updated_at", "2014-06-13 22:09:06.367134"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.368882"], ["latitude", 42.027963400000004], ["longitude", -87.7608172], ["requester_id", 1], ["responder_id", 4], ["updated_at", "2014-06-13 22:09:06.368882"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.370730"], ["latitude", 42.0616708], ["longitude", -87.789079], ["requester_id", 4], ["responder_id", 2], ["updated_at", "2014-06-13 22:09:06.370730"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["active", "t"], ["created_at", "2014-06-13 22:09:06.372503"], ["latitude", 41.895691600000006], ["longitude", -87.7517156], ["requester_id", 3], ["responder_id", 5], ["updated_at", "2014-06-13 22:09:06.372503"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.374300"], ["latitude", 42.008731000000004], ["longitude", -87.7547708], ["requester_id", 4], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.374300"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[36mEvent Load (0.8ms)[0m  [1mSELECT "events".* FROM "events"[0m

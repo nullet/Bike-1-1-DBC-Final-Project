@@ -60,8 +60,8 @@ users = [tom, paige, robb, nate, jared]
 
 	requester = users.pop.id
 	responder = users.pop.id
-	lat = 41 + rand.round(6)
-	long = -87 - rand.round(6)
+	lat = 41.889 + rand.round(6) / 5
+	long = -87.637 - rand.round(6) / 5
 
 	Event.create!(requester_id: requester, 
 		responder_id: responder,
