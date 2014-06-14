@@ -12,25 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :requester_id %><br>
-    <%= f.number_field :requester_id %>
+    <%= f.label :request_text %><br>
+    <%= f.text_area :request_text %>
   </div>
-  <div class="field">
-    <%= f.label :responder_id %><br>
-    <%= f.number_field :responder_id %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :active %><br>
-    <%= f.check_box :active %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

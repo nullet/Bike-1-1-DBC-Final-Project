@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20140613204008) do
     t.datetime "updated_at"
   end
 
-  add_index "events", ["requester_id"], name: "index_events_on_requester_id", unique: true, using: :btree
-  add_index "events", ["responder_id"], name: "index_events_on_responder_id", unique: true, using: :btree
+  add_index "events", ["requester_id"], name: "index_events_on_requester_id", using: :btree
+  add_index "events", ["responder_id"], name: "index_events_on_responder_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"

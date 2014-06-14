@@ -24,6 +24,9 @@
   <div><%= f.label :home_base, "Please provide an address:" %><br />
     <%= f.text_field :home_base, autocomplete: "off" %></div>
 
+  <div><%= f.hidden_field :karma_count, :value => 0 %></div>
+  <div><%= f.hidden_field :hb_radius, :value => 1 %></div>
+    
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
