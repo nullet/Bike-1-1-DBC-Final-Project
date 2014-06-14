@@ -4228,6 +4228,1319 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:17:38
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.374300"], ["latitude", 42.008731000000004], ["longitude", -87.7547708], ["requester_id", 4], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.374300"]]
   [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
   [1m[36mEvent Load (0.8ms)[0m  [1mSELECT "events".* FROM "events"[0m
+ 
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateEvents (20140613204008)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (36.4ms)[0m  [1mCREATE TABLE "events" ("id" serial primary key, "requester_id" integer, "responder_id" integer, "latitude" float, "longitude" float, "active" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "events" already exists
+: CREATE TABLE "events" ("id" serial primary key, "requester_id" integer, "responder_id" integer, "latitude" float, "longitude" float, "active" boolean, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (26.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (26.2ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20140612152141)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (43.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "phone" integer, "karma_count" integer, "home_base" character varying(255), "hb_latitude" float, "hb_longitude" float, "hb_radius" float, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (0.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (16.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140612152141"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEvents (20140613204008)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "events" ("id" serial primary key, "requester_id" integer, "responder_id" integer, "latitude" float, "longitude" float, "active" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (15.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140613204008"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 18:32:59 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 354ms (Views: 336.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:33:00 -0500
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:33:00 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:33:00 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:33:00 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:33:00 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:33:00 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:33:00 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:33:00 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:33:00 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:33:00 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-13 18:33:02 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mUser Load (16.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered devise/shared/_links.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (127.1ms)
+Completed 200 OK in 173ms (Views: 133.1ms | ActiveRecord: 17.4ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-13 18:33:11 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (52.4ms)
+Completed 200 OK in 61ms (Views: 58.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-13 19:01:04 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 96ms (Views: 94.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-06-13 19:02:01 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ebb9IaNvIOSybQaQhURSyP9Cdey+T2eLUhvxj7jYkpo=", "user"=>{"name"=>"Tom Nullet", "email"=>"tomnullet@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "phone"=>"nah", "home_base"=>"351 west hubbard, chicago il"}, "commit"=>"Sign up"}
+Unpermitted parameters: name, phone, home_base
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (29.0ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'tomnullet@gmail.com' LIMIT 1
+  [1m[36mSQL (115.8ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-06-14 00:02:01.651489"], ["email", "tomnullet@gmail.com"], ["encrypted_password", "$2a$10$yl9LCU4tbfz4LJUbihNdLuyAac8ivfigMCneZHL4SWC/wjshj3fSa"], ["updated_at", "2014-06-14 00:02:01.651489"]]
+  [1m[35m (592.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "current_sign_in_ip" = $2, "last_sign_in_at" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = 1  [["current_sign_in_at", "2014-06-14 00:02:02.386218"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2014-06-14 00:02:02.386218"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2014-06-14 00:02:02.388618"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 1035ms (ActiveRecord: 739.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:02:02 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 25ms (Views: 24.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:02:02 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:02:02 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:02:02 -0500
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:02:02 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:02:02 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:02:02 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:02:02 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:02:02 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:02:02 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:02:02 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-13 19:13:06 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[35mUser Load (97.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 130ms (ActiveRecord: 97.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:13:06 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 83ms (Views: 82.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:13:43 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+Completed 500 Internal Server Error in 44ms
+
+ActionView::Template::Error (undefined method `render_partial' for #<#<Class:0x00000104aa9538>:0x00000104ba3010>):
+     7:   <%= csrf_meta_tags %>
+     8: </head>
+     9: <body>
+    10:   <% render_partial 'user/nav' %>
+    11: 
+    12:   <p class="notice"><%= notice %></p>
+    13:   <p class="alert"><%= alert %></p>
+  app/views/layouts/application.html.erb:10:in `_app_views_layouts_application_html_erb__2309363244139300019_2187152080'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (12.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:13:59 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 15ms
+
+ActionView::Template::Error (undefined method `render_partial' for #<#<Class:0x00000104aa9538>:0x000001033acce0>):
+     7:   <%= csrf_meta_tags %>
+     8: </head>
+     9: <body>
+    10:   <% render_partial 'users/nav' %>
+    11: 
+    12:   <p class="notice"><%= notice %></p>
+    13:   <p class="alert"><%= alert %></p>
+  app/views/layouts/application.html.erb:10:in `_app_views_layouts_application_html_erb__2309363244139300019_2174609820'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (9.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:14:08 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 44ms
+
+ActionView::Template::Error (undefined method `partial' for #<#<Class:0x00000104aa9538>:0x00000107856210>):
+     7:   <%= csrf_meta_tags %>
+     8: </head>
+     9: <body>
+    10:   <% render partial 'users/nav' %>
+    11: 
+    12:   <p class="notice"><%= notice %></p>
+    13:   <p class="alert"><%= alert %></p>
+  app/views/layouts/application.html.erb:10:in `_app_views_layouts_application_html_erb__2309363244139300019_2210588340'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (9.2ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-13 19:17:20 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:17:22 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered users/_nav.html.erb (2.2ms)
+Completed 200 OK in 31ms (Views: 30.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:17:22 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:17:22 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:17:22 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:17:22 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:17:22 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:17:22 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:17:22 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:17:22 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:17:22 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:17:22 -0500
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-13 19:17:28 -0500
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:17:28 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered users/_nav.html.erb (1.8ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-13 19:17:28 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:17:28 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered users/_nav.html.erb (2.1ms)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2014-06-13 19:18:06 -0500
+
+ActionController::RoutingError (No route matches [GET] "/user"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Tom/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Tom/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Tom/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (48.8ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (84.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered users/_nav.html.erb (1.2ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:10 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 19:18:15 -0500
+Processing by UsersController#index as HTML
+  Rendered users/index.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered users/_nav.html.erb (1.4ms)
+Completed 200 OK in 24ms (Views: 22.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:15 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:15 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:15 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:15 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:15 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:15 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:15 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:15 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:15 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:15 -0500
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-13 19:18:39 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Ebb9IaNvIOSybQaQhURSyP9Cdey+T2eLUhvxj7jYkpo="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 40ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:18:40 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.5ms)
+  Rendered users/_nav.html.erb (0.4ms)
+Completed 200 OK in 39ms (Views: 38.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:40 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:40 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:40 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:40 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:40 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:40 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:18:40 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:40 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:40 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:18:40 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:19:41 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  Rendered users/_nav.html.erb (0.4ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:41 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:41 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:41 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:41 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:41 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:41 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:41 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:41 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:41 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:41 -0500
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0LmbW/nytIpFex7fmn/fi88DKurX3CCgPfcb6y4aFXg="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+  Rendered users/_nav.html.erb (0.3ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:45 -0500
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-13 19:19:47 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.8ms)
+  Rendered users/_nav.html.erb (0.4ms)
+Completed 200 OK in 54ms (Views: 52.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-06-13 19:19:51 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"N90aE0b7f97hrHRHNJ+73aHmc5BKq36fg6XR1Vtgl0E=", "user"=>{"email"=>"tomnullet@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (151.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'tomnullet@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (46.3ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = 1[0m  [["current_sign_in_at", "2014-06-14 00:19:52.198313"], ["sign_in_count", 2], ["updated_at", "2014-06-14 00:19:52.199057"]]
+  [1m[35m (33.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 497ms (ActiveRecord: 231.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:19:52 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered users/_nav.html.erb (1.2ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:52 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:52 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:52 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:52 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:19:52 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:52 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:52 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:52 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:52 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:19:52 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:20:07 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered users/_nav.html.erb (2.3ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:20:07 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:20:07 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:20:07 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:20:07 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:20:07 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:20:07 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:20:07 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:20:07 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:20:07 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:20:07 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-13 19:20:16 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:20:16 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered users/_nav.html.erb (1.8ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-13 19:20:18 -0500
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:20:18 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered users/_nav.html.erb (1.4ms)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:21:20 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 133ms
+
+NoMethodError (undefined method `redirect' for #<WelcomeController:0x00000103404670>):
+  app/controllers/welcome_controller.rb:5:in `index'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (23.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 19:21:30 -0500
+Processing by UsersController#index as HTML
+  Rendered users/index.html.erb within layouts/application (0.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered users/_nav.html.erb (1.4ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:21:30 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:21:30 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:21:30 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:30 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:21:30 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:30 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:30 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:30 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:30 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:30 -0500
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-13 19:21:38 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ZIfLQdUB2eK97osRZ7cbN0gcnwRAn7oZKNBEuv2EJfc="}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:21:38 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  Rendered users/_nav.html.erb (0.7ms)
+Completed 500 Internal Server Error in 37ms
+
+ActionView::Template::Error (undefined method `email' for nil:NilClass):
+    1: <div id='user_nav'>
+    2:   <% if %>
+    3:     Signed in as <%= current_user.email %>. Not you?
+    4:     <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    5:   <% else %>
+    6:     <%= link_to 'Sign up!', new_user_registration_path %> Or, <%= link_to 'Sign in', new_user_session_path %> 
+  app/views/users/_nav.html.erb:3:in `_app_views_users__nav_html_erb__4292777792949947286_2174729320'
+  app/views/layouts/application.html.erb:10:in `_app_views_layouts_application_html_erb__2309363244139300019_2174593660'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (9.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:21:58 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+  Rendered users/_nav.html.erb (0.7ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:21:58 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:21:58 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:21:58 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:21:58 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:58 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:58 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:58 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:58 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:58 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:21:58 -0500
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-13 19:22:02 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.2ms)
+  Rendered users/_nav.html.erb (0.6ms)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-06-13 19:22:06 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"75DUROdWR3HT4NCJRkKUDWb9xJn4Mp32D45SihV48+Q=", "user"=>{"email"=>"tomnullet@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'tomnullet@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = 1  [["current_sign_in_at", "2014-06-14 00:22:06.744074"], ["last_sign_in_at", "2014-06-14 00:19:52.198313"], ["sign_in_count", 3], ["updated_at", "2014-06-14 00:22:06.744686"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 79ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:22:06 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+Completed 500 Internal Server Error in 36ms
+
+NoMethodError (undefined method `redirect' for #<WelcomeController:0x00000104d40eb8>):
+  app/controllers/welcome_controller.rb:5:in `index'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:22:46 -0500
+Processing by WelcomeController#index as HTML
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `redirect' for #<WelcomeController:0x00000104c18540>):
+  app/controllers/welcome_controller.rb:5:in `index'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:22:54 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 49ms
+
+NoMethodError (undefined method `redirect' for #<WelcomeController:0x0000010786daa0>):
+  app/controllers/welcome_controller.rb:5:in `index'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:23:29 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+Completed 500 Internal Server Error in 49ms
+
+NoMethodError (undefined method `redirect' for #<WelcomeController:0x00000104be8408>):
+  app/controllers/welcome_controller.rb:5:in `index'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:23:38 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 48ms
+
+NoMethodError (undefined method `redirect' for #<WelcomeController:0x000001078b8320>):
+  app/controllers/welcome_controller.rb:5:in `index'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:24:00 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+Completed 500 Internal Server Error in 48ms
+
+NoMethodError (undefined method `redirect' for #<WelcomeController:0x00000104bf9668>):
+  app/controllers/welcome_controller.rb:5:in `index'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:24:07 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 54ms
+
+NoMethodError (undefined method `redirect' for #<WelcomeController:0x00000104c12028>):
+  app/controllers/welcome_controller.rb:5:in `index'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:25:52 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+Completed 500 Internal Server Error in 47ms
+
+ActionView::MissingTemplate (Missing template welcome/users#index, application/users#index with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder, :coffee]}. Searched in:
+  * "/Users/Tom/projects/Bike-1-1/app/views"
+  * "/Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/devise-3.2.4/app/views"
+):
+  app/controllers/welcome_controller.rb:5:in `index'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:26:20 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered users/index.html.erb within layouts/application (0.3ms)
+  Rendered users/_nav.html.erb (0.4ms)
+Completed 200 OK in 63ms (Views: 49.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:26:20 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:26:20 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:26:20 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:26:20 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:26:20 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:26:20 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:26:20 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:26:20 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:26:20 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:26:20 -0500
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"KSIfpz4V7VmjM/FGdgepv3r9Dp+fScjoKtMXzf66Hyc="}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.4ms)
+  Rendered users/_nav.html.erb (0.2ms)
+Completed 200 OK in 24ms (Views: 23.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:27:58 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (63.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (15.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20140612152141)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (79.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "phone" integer, "karma_count" integer, "home_base" character varying(255), "hb_latitude" float, "hb_longitude" float, "hb_radius" float, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (16.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140612152141"]]
+  [1m[36m (15.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEvents (20140613204008)
+  [1m[35m (15.5ms)[0m  BEGIN
+  [1m[36m (5.5ms)[0m  [1mCREATE TABLE "events" ("id" serial primary key, "requester_id" integer, "responder_id" integer, "request_text" text, "latitude" float, "longitude" float, "active" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140613204008"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 19:50:05 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (4.6ms)
+  Rendered users/_nav.html.erb (1.8ms)
+Completed 200 OK in 461ms (Views: 433.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 19:50:06 -0500
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 19:50:06 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 19:50:06 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 19:50:06 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 19:50:06 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 19:50:06 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 19:50:06 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 19:50:06 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 19:50:06 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 19:50:06 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-13 19:50:08 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (242.5ms)
+  Rendered users/_nav.html.erb (0.3ms)
+Completed 200 OK in 265ms (Views: 261.0ms | ActiveRecord: 1.4ms)
+  [1m[36m (19.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (16.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20140612152141)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (22.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "phone" integer, "karma_count" integer, "home_base" character varying(255), "hb_latitude" float, "hb_longitude" float, "hb_radius" float, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (15.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140612152141"]]
+  [1m[36m (15.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEvents (20140613204008)
+  [1m[35m (14.6ms)[0m  BEGIN
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "events" ("id" serial primary key, "requester_id" integer, "responder_id" integer, "request_text" text, "latitude" float, "longitude" float, "active" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (25.1ms)[0m  CREATE  INDEX  "index_requester_id_on_unique_and_true" ON "requester_id"  ("[:unique, true]")
+PG::UndefinedTable: ERROR:  relation "requester_id" does not exist
+: CREATE  INDEX  "index_requester_id_on_unique_and_true" ON "requester_id"  ("[:unique, true]")
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36m (2.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20140612152141)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "phone" integer, "karma_count" integer, "home_base" character varying(255), "hb_latitude" float, "hb_longitude" float, "hb_radius" float, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140612152141"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEvents (20140613204008)
+  [1m[36m (2.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20140612152141)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "phone" integer, "karma_count" integer, "home_base" character varying(255), "hb_latitude" float, "hb_longitude" float, "hb_radius" float, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140612152141"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEvents (20140613204008)
+  [1m[36m (1.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20140612152141)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "phone" integer, "karma_count" integer, "home_base" character varying(255), "hb_latitude" float, "hb_longitude" float, "hb_radius" float, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.6ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140612152141"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEvents (20140613204008)
+  [1m[36m (2.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20140612152141)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "phone" integer, "karma_count" integer, "home_base" character varying(255), "hb_latitude" float, "hb_longitude" float, "hb_radius" float, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140612152141"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEvents (20140613204008)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "events" ("id" serial primary key, "requester_id" integer, "responder_id" integer, "request_text" text, "latitude" float, "longitude" float, "active" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.7ms)[0m  ROLLBACK
+  [1m[36m (78.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (54.9ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20140612152141)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying(255), "last_name" character varying(255), "phone" integer, "karma_count" integer, "home_base" character varying(255), "hb_latitude" float, "hb_longitude" float, "hb_radius" float, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140612152141"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEvents (20140613204008)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.4ms)[0m  [1mCREATE TABLE "events" ("id" serial primary key, "requester_id" integer, "responder_id" integer, "request_text" text, "latitude" float, "longitude" float, "active" boolean, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.6ms)[0m  CREATE UNIQUE INDEX  "index_events_on_requester_id" ON "events"  ("requester_id")
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX  "index_events_on_responder_id" ON "events"  ("responder_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140613204008"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-14 00:10:37 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (2.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (169.5ms)
+  Rendered users/_nav.html.erb (2.1ms)
+Completed 200 OK in 469ms (Views: 439.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:10:38 -0500
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:10:38 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:10:38 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:10:38 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:10:38 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:10:38 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:10:38 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:10:38 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:10:38 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:10:38 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-14 00:12:22 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 12ms
+
+SyntaxError (/Users/Tom/projects/Bike-1-1/app/views/devise/registrations/new.html.erb:31: unterminated string meets end of file
+/Users/Tom/projects/Bike-1-1/app/views/devise/registrations/new.html.erb:31: syntax error, unexpected end-of-input, expecting ')'):
+  actionview (4.1.1) lib/action_view/template.rb:297:in `module_eval'
+  actionview (4.1.1) lib/action_view/template.rb:297:in `compile'
+  actionview (4.1.1) lib/action_view/template.rb:245:in `block (2 levels) in compile!'
+  activesupport (4.1.1) lib/active_support/notifications.rb:161:in `instrument'
+  actionview (4.1.1) lib/action_view/template.rb:339:in `instrument'
+  actionview (4.1.1) lib/action_view/template.rb:244:in `block in compile!'
+  actionview (4.1.1) lib/action_view/template.rb:232:in `synchronize'
+  actionview (4.1.1) lib/action_view/template.rb:232:in `compile!'
+  actionview (4.1.1) lib/action_view/template.rb:144:in `block in render'
+  activesupport (4.1.1) lib/active_support/notifications.rb:161:in `instrument'
+  actionview (4.1.1) lib/action_view/template.rb:339:in `instrument'
+  actionview (4.1.1) lib/action_view/template.rb:143:in `render'
+  actionview (4.1.1) lib/action_view/renderer/template_renderer.rb:55:in `block (2 levels) in render_template'
+  actionview (4.1.1) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (4.1.1) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.1) lib/active_support/notifications.rb:159:in `instrument'
+  actionview (4.1.1) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionview (4.1.1) lib/action_view/renderer/template_renderer.rb:54:in `block in render_template'
+  actionview (4.1.1) lib/action_view/renderer/template_renderer.rb:62:in `render_with_layout'
+  actionview (4.1.1) lib/action_view/renderer/template_renderer.rb:53:in `render_template'
+  actionview (4.1.1) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionview (4.1.1) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.1) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.1) lib/action_view/rendering.rb:99:in `_render_template'
+  actionpack (4.1.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.1.1) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.1) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.1) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.1.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/Tom/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (4.1.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.1) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.1.1) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.1.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.1) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.1.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.1) lib/action_controller/metal/responder.rb:238:in `default_render'
+  actionpack (4.1.1) lib/action_controller/metal/responder.rb:165:in `to_html'
+  actionpack (4.1.1) lib/action_controller/metal/responder.rb:158:in `respond'
+  actionpack (4.1.1) lib/action_controller/metal/responder.rb:151:in `call'
+  actionpack (4.1.1) lib/action_controller/metal/mime_responds.rb:400:in `respond_with'
+  devise (3.2.4) app/controllers/devise/registrations_controller.rb:8:in `new'
+  actionpack (4.1.1) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.1.1) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:229:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:149:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:149:in `block in halting_and_conditional'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:149:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:149:in `block in halting_and_conditional'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:86:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.1) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.1) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.1) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.1) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.1) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.1.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.1) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.1.1) lib/action_dispatch/routing/mapper.rb:45:in `call'
+  actionpack (4.1.1) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.1.1) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.1) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:676:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.1) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+=======
 
 
 Started GET "/" for 127.0.0.1 at 2014-06-13 17:31:04 -0500
@@ -4873,6 +6186,7 @@ Started GET "/assets/images/bike_sign.png" for 127.0.0.1 at 2014-06-13 17:58:17 
 
 ActionController::RoutingError (No route matches [GET] "/assets/images/bike_sign.png"):
   actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+
   actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
   railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
   railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
@@ -4892,6 +6206,664 @@ ActionController::RoutingError (No route matches [GET] "/assets/images/bike_sign
   rack (1.5.2) lib/rack/lock.rb:17:in `call'
   rack (1.5.2) lib/rack/content_length.rb:14:in `call'
   rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+
+  /Users/Tom/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Tom/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Tom/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/Tom/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.5ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-14 00:12:48 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (3.9ms)
+  Rendered users/_nav.html.erb (0.4ms)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:12:48 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:12:48 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:12:48 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:12:48 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:12:48 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:12:48 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:12:48 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:12:48 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:12:48 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:12:48 -0500
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-14 00:19:10 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 47ms (Views: 35.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-06-14 00:19:15 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SL6PfL/RqbnZvjPOWG/v8cGuwVN/ZZgvjEbkcAYoZoU=", "user"=>{"email"=>"tomnullet@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (65.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'tomnullet@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1
+Completed 401 Unauthorized in 153ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SL6PfL/RqbnZvjPOWG/v8cGuwVN/ZZgvjEbkcAYoZoU=", "user"=>{"email"=>"tomnullet@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 82ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:19:15 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:19:15 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:19:15 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:19:15 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:15 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:15 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:15 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:15 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:15 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:15 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-14 00:19:20 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:19:20 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:20 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:19:20 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:19:20 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:20 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:19:20 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:20 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:20 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:20 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:19:20 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-14 00:20:37 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 41ms (Views: 40.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:20:37 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:20:37 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:20:37 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:20:37 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:20:37 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:20:37 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:20:37 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:20:37 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:20:37 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:20:37 -0500
+
+
+Started POST "/users" for 127.0.0.1 at 2014-06-14 00:21:55 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SL6PfL/RqbnZvjPOWG/v8cGuwVN/ZZgvjEbkcAYoZoU=", "user"=>{"first_name"=>"tom", "last_name"=>"nullet", "email"=>"tomnullet@gmail.com", "phone"=>"8147466128", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "home_base"=>"351 west hubbard chicago il 60611"}, "commit"=>"Sign up"}
+Unpermitted parameters: first_name, last_name, phone, home_base
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'tomnullet@gmail.com' LIMIT 1
+  [1m[36mSQL (68.0ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-06-14 05:21:56.096866"], ["email", "tomnullet@gmail.com"], ["encrypted_password", "$2a$10$KyWQ/E5ZxaLy.do3CSmMq.CxQ34gzbEWPK4QSYuMLga1ljUG/HPH2"], ["updated_at", "2014-06-14 05:21:56.096866"]]
+  [1m[35m (641.2ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (31.5ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "current_sign_in_ip" = $2, "last_sign_in_at" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = 1  [["current_sign_in_at", "2014-06-14 05:21:56.850435"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2014-06-14 05:21:56.850435"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2014-06-14 05:21:56.852300"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 921ms (ActiveRecord: 742.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-14 00:21:56 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered users/_nav.html.erb (0.3ms)
+  Rendered users/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:21:57 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:21:57 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:21:57 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:21:57 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:21:57 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:21:57 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:21:57 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:21:57 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:21:57 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:21:57 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-14 00:22:15 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered users/_nav.html.erb (0.3ms)
+  Rendered users/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 40ms (Views: 37.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:22:16 -0500
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:22:16 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:22:16 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:22:16 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:22:16 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:22:16 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:22:16 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:22:16 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:22:16 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:22:16 -0500
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SL6PfL/RqbnZvjPOWG/v8cGuwVN/ZZgvjEbkcAYoZoU="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 20ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 24ms (Views: 22.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:38 -0500
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-14 00:24:41 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 49ms (Views: 47.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tLIQ/WRDCmHbCodQyo1JSU+oUnnlt6tPUIAIKgeOc4U=", "user"=>{"email"=>"tomnullet@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (15.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'tomnullet@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = 1[0m  [["current_sign_in_at", "2014-06-14 05:24:46.554082"], ["sign_in_count", 2], ["updated_at", "2014-06-14 05:24:46.554744"]]
+  [1m[35m (15.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 120ms (ActiveRecord: 31.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered users/_nav.html.erb (0.2ms)
+  Rendered users/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:24:46 -0500
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/DdtgUXwDk5Jx22Av9tJy8NKkvQOB2fferSUiQzkTl0="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:26:44 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-14 00:31:09 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 52ms (Views: 50.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-14 00:41:26 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:41:27 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:41:27 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:41:27 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:41:27 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:27 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:27 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:27 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:27 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:27 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:27 -0500
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-14 00:41:30 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 62ms (Views: 8.6ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-06-14 00:41:36 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"807CLOzBVkAi7XUjb7xMqRW2VROdu0aa5nEKF57mbhA=", "user"=>{"email"=>"tomnullet@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'tomnullet@gmail.com'  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = 1[0m  [["current_sign_in_at", "2014-06-14 05:41:36.898073"], ["last_sign_in_at", "2014-06-14 05:24:46.554082"], ["sign_in_count", 3], ["updated_at", "2014-06-14 05:41:36.898745"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 80ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-14 00:41:36 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered users/_nav.html.erb (0.3ms)
+  Rendered users/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 00:41:36 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 00:41:36 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 00:41:36 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:36 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:37 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 00:41:37 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:37 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:37 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:37 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 00:41:37 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-14 11:11:44 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered users/_nav.html.erb (0.9ms)
+  Rendered users/index.html.erb within layouts/application (37.6ms)
+Completed 200 OK in 507ms (Views: 392.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-14 11:11:44 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered users/_nav.html.erb (0.4ms)
+  Rendered users/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 7.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 11:11:45 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 11:11:45 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 11:11:45 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:45 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:45 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:45 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 11:11:45 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:45 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:45 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:45 -0500
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zXNP4AMikBpyDeukJBGbRYY6J+B+XptqhzA2Cluofmk="}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 110ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 25ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 11:11:47 -0500
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-14 11:11:49 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (51.7ms)
+Completed 200 OK in 96ms (Views: 95.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"olLtF9e2EkMk+eIOsLnSEgBypfQtNP4ucA+i1aRlIyI=", "user"=>{"email"=>"bob@hoskins.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "first_name"=>"bob", "last_name"=>"hoskins", "phone"=>"1234567890", "home_base"=>"420 E ohio st, chicago IL 60611"}, "commit"=>"Sign up"}
+Unpermitted parameters: first_name, last_name, phone, home_base
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.8ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" = 'bob@hoskins.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2014-06-14 16:12:25.567903"], ["email", "bob@hoskins.com"], ["encrypted_password", "$2a$10$5F1PDqpWyae5RqOCf.VDYuf8xxu1WdmQLrB8t5oqKM/D2M0tdFKPW"], ["updated_at", "2014-06-14 16:12:25.567903"]]
+  [1m[35m (15.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "current_sign_in_ip" = $2, "last_sign_in_at" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = 2  [["current_sign_in_at", "2014-06-14 16:12:25.593287"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2014-06-14 16:12:25.593287"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2014-06-14 16:12:25.594284"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 221ms (ActiveRecord: 18.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 2  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered users/_nav.html.erb (0.3ms)
+  Rendered users/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+=======
   /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
   /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
   /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
@@ -5342,6 +7314,7 @@ Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+
 
 
 Started GET "/users/" for 127.0.0.1 at 2014-06-13 18:46:32 -0500
@@ -6341,3 +8314,4 @@ Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 11:49:24 -0500
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 11:49:24 -0500
+

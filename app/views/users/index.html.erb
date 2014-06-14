@@ -1,4 +1,7 @@
+<%= render 'users/nav' %>
+
 <h1>Welcome to Bike-1-1</h1>
+
 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
@@ -86,7 +89,5 @@
 
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-
-<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
 
 <div id="map-canvas"/>
