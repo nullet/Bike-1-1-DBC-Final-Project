@@ -7,8 +7,13 @@ class UsersController < ApplicationController
 		@events = Event.all
 	end
 
+	def show
+		
+	end
+
 	def new
 		@user = User.new
+		redirect_to 'users'
 	end
 
 	def create
