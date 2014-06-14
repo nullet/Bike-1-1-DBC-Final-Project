@@ -1,3 +1,5 @@
+<%= render 'users/nav' %>
+
 <h1>Welcome to Bike-1-1</h1>
 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -34,9 +36,9 @@
     
     createMarker(userLatLng, "DBC");
 
-    <%@events.each do |event|%>
-      <%if event.created_at > 3.hour.ago && event.active == true%>
-        var map_event = new google.maps.LatLng(<%=event.latitude%>, <%=event.longitude%>)
+    <% @events.each do |event| %>
+      <% if event.created_at > 3.hour.ago && event.active == true %>
+        var map_event = new google.maps.LatLng(<%= event.latitude %>, <%= event.longitude %>)
         createMarker(map_event, "test");
       <%end%>
     <%end%>

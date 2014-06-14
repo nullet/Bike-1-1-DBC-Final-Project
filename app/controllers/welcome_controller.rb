@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 
   def index
     if current_user
-      render 'users/index'
+      redirect_to '/users'
     end
   end
 
