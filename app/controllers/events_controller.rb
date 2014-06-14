@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /events
   # GET /events.json
@@ -25,6 +26,11 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.requester_id = (1 + rand(4))
+    @event.active = true
+    # @event.latitude = 41.880654 # will need to come in through phone
+    # @event.longitude = -87.634252 # will need to come in through phone
+    # @event.request_text = "Hey" # will need to comin in through phone
 
     respond_to do |format|
       if @event.save
@@ -69,6 +75,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:requester_id, :responder_id, :latitude, :longitude, :active)
+      params.require(:event).permit(:requester_id, :responder_id, :latitude, :longitude, :active, :request_text)
     end
 end
