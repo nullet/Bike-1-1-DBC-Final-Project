@@ -9,7 +9,8 @@ describe User do
   it { should have_many(:requests).class_name('Event').with_foreign_key('requester_id') }
   it { should have_many(:responses).class_name('Event').with_foreign_key('responder_id') }
 
-  it { should have_db_column(:name) }
+  it { should have_db_column(:first_name) }
+  it { should have_db_column(:last_name) }
   it { should have_db_column(:email) }
   it { should have_db_column(:encrypted_password) }
   it { should have_db_column(:phone) }
