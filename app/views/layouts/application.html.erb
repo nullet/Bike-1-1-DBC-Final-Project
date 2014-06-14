@@ -7,15 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render 'users/nav' %>
-
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  
 <%= yield %>
 
 </body>
 </html>
 
-<!-- index foreign keys
-  fix signup form for first/last name
+<!--
+fix signup form for first/last name
 route to app after login, route to profile after signup -->
