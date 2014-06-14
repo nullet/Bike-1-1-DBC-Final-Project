@@ -10,7 +10,7 @@ class CreateEvents < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index   :events, :requester_id, unique: true
-    add_index   :events, :responder_id, unique: true
+    add_index   :events, :requester_id
+    add_index   :events, :responder_id
   end
 end
