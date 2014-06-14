@@ -1,11 +1,19 @@
 class UsersController < ApplicationController
+
+	before_action :authenticate_user!
+	
 	def index
 		@users = User.all
 		@events = Event.all
 	end
 
+	def show
+		
+	end
+
 	def new
 		@user = User.new
+		redirect_to 'users'
 	end
 
 	def create
