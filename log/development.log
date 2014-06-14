@@ -4228,6 +4228,7 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:17:38
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "events" ("active", "created_at", "latitude", "longitude", "requester_id", "responder_id", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["active", "t"], ["created_at", "2014-06-13 22:09:06.374300"], ["latitude", 42.008731000000004], ["longitude", -87.7547708], ["requester_id", 4], ["responder_id", 1], ["updated_at", "2014-06-13 22:09:06.374300"]]
   [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
   [1m[36mEvent Load (0.8ms)[0m  [1mSELECT "events".* FROM "events"[0m
+<<<<<<< HEAD
   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
 Migrating to CreateEvents (20140613204008)
   [1m[35m (0.1ms)[0m  BEGIN
@@ -5539,6 +5540,402 @@ SyntaxError (/Users/Tom/projects/Bike-1-1/app/views/devise/registrations/new.htm
   actionpack (4.1.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
   actionpack (4.1.1) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
   actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+=======
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 17:31:04 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (18.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 859ms (Views: 842.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:31:05 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:31:05 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:31:05 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:31:05 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:05 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:05 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:05 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:05 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:05 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:05 -0500
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-06-13 17:31:11 -0500
+Processing by UsersController#index as HTML
+  Rendered users/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:31:11 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:31:11 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:31:11 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:31:11 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:11 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:11 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:11 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:11 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:11 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:31:11 -0500
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-06-13 17:36:34 -0500
+Processing by UsersController#index as HTML
+  Rendered users/index.html.erb within layouts/application (29.1ms)
+Completed 500 Internal Server Error in 43ms
+
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    33:   	service.nearbySearch(request, callback);
+    34:     
+    35:     createMarker(userLatLng, "DBC");
+    36:     <%@events.each do |event|%>
+    37:       var map_event = new google.maps.LatLng(<%=event.latitude%>, <%=event.longitude%>)
+    38:       createMarker(map_event, "test");
+    39:     <%end%>
+  app/views/users/index.html.erb:36:in `_app_views_users_index_html_erb___3213679288105257056_2185387840'
+
+
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.7ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-06-13 17:36:51 -0500
+Processing by UsersController#index as HTML
+  [1m[35mEvent Load (25.5ms)[0m  SELECT "events".* FROM "events"
+  Rendered users/index.html.erb within layouts/application (53.1ms)
+Completed 200 OK in 75ms (Views: 33.3ms | ActiveRecord: 31.3ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:36:51 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:36:51 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:36:51 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:36:51 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:36:51 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:36:51 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:36:51 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:36:51 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:36:51 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:36:51 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 17:49:40 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 37ms (Views: 32.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:49:40 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:49:40 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:49:40 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:49:40 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:49:40 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:49:40 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:49:40 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:49:40 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:49:40 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:49:40 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 17:50:20 -0500
+Processing by UsersController#index as HTML
+  [1m[36mEvent Load (1.0ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  Rendered users/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 20ms (Views: 18.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:20 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:20 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:20 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:20 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:20 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:20 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:20 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:20 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:20 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:20 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 17:50:29 -0500
+Processing by UsersController#index as HTML
+  [1m[35mEvent Load (0.6ms)[0m  SELECT "events".* FROM "events"
+  Rendered users/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:29 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:29 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:29 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:29 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:29 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:29 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:29 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:29 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:29 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:29 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 17:50:52 -0500
+Processing by UsersController#index as HTML
+  [1m[36mEvent Load (0.7ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  Rendered users/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:52 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:52 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:52 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:50:52 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:52 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:52 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:52 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:52 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:52 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:50:52 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 17:51:05 -0500
+Processing by UsersController#index as HTML
+  [1m[35mEvent Load (0.8ms)[0m  SELECT "events".* FROM "events"
+  Rendered users/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:51:05 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:51:05 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:05 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:51:05 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:51:05 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:05 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:05 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:05 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:05 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:05 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 17:51:09 -0500
+Processing by UsersController#index as HTML
+  [1m[36mEvent Load (0.5ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  Rendered users/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:51:09 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:51:09 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:51:09 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:51:09 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:09 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:09 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:09 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:09 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:09 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:51:09 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 17:54:05 -0500
+Processing by UsersController#index as HTML
+  [1m[35mEvent Load (0.6ms)[0m  SELECT "events".* FROM "events"
+  Rendered users/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:54:05 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:54:05 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:54:05 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:05 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:54:05 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:05 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:05 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:05 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:05 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:05 -0500
+
+
+Started GET "/images/bike_sign.png" for 127.0.0.1 at 2014-06-13 17:54:06 -0500
+
+ActionController::RoutingError (No route matches [GET] "/images/bike_sign.png"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
   actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
   railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
   railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
@@ -5558,6 +5955,258 @@ SyntaxError (/Users/Tom/projects/Bike-1-1/app/views/devise/registrations/new.htm
   rack (1.5.2) lib/rack/lock.rb:17:in `call'
   rack (1.5.2) lib/rack/content_length.rb:14:in `call'
   rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.5ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (9.4ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (65.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+Processing by UsersController#index as HTML
+  [1m[36mEvent Load (0.6ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  Rendered users/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+
+
+Started GET "/assets/images/bike_sign.png" for 127.0.0.1 at 2014-06-13 17:54:46 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/images/bike_sign.png"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.3ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (36.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 17:55:35 -0500
+Processing by UsersController#index as HTML
+  [1m[35mEvent Load (0.9ms)[0m  SELECT "events".* FROM "events"
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:55:35 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:55:35 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:55:35 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:35 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:55:35 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:35 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:35 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:35 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:35 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:35 -0500
+
+
+Started GET "/assets/images/bike_sign.png" for 127.0.0.1 at 2014-06-13 17:55:36 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/images/bike_sign.png"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.8ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (42.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 17:55:52 -0500
+Processing by UsersController#index as HTML
+  [1m[36mEvent Load (0.6ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  Rendered users/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:55:52 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:52 -0500
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:55:52 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:55:52 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:52 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:55:52 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:52 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:52 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:52 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:55:52 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 17:58:16 -0500
+Processing by UsersController#index as HTML
+  [1m[35mEvent Load (0.9ms)[0m  SELECT "events".* FROM "events"
+  Rendered users/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:58:16 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:58:16 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:58:16 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:16 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:58:16 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:16 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:16 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:16 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:16 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:16 -0500
+
+
+Started GET "/assets/images/bike_sign.png" for 127.0.0.1 at 2014-06-13 17:58:17 -0500
+
+ActionController::RoutingError (No route matches [GET] "/assets/images/bike_sign.png"):
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+>>>>>>> master
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+<<<<<<< HEAD
   /Users/Tom/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
   /Users/Tom/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
   /Users/Tom/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
@@ -6214,3 +6863,455 @@ Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-14 11:12:25 -0500
+=======
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/Home/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.3ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /Users/Home/.rvm/gems/ruby-2.1.1/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (43.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 17:58:25 -0500
+Processing by UsersController#index as HTML
+  [1m[36mEvent Load (0.6ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  Rendered users/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 17:58:25 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 17:58:25 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 17:58:25 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 17:58:25 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:25 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:25 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:25 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:25 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:25 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 17:58:25 -0500
+
+
+Started GET "/users" for 127.0.0.1 at 2014-06-13 18:00:31 -0500
+Processing by UsersController#index as HTML
+  [1m[35mEvent Load (0.8ms)[0m  SELECT "events".* FROM "events"
+  Rendered users/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 23ms (Views: 21.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:00:31 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:00:31 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:00:31 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:00:31 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:00:31 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:00:31 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:00:31 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:00:31 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:00:31 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:00:32 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 18:20:40 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 32ms (Views: 28.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:20:40 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:20:40 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:20:40 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:20:40 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:20:40 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:20:40 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:20:40 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:20:40 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:20:40 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:20:40 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 18:21:57 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:21:57 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:21:57 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:21:57 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:21:57 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:21:57 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:21:57 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:21:57 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:21:57 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:21:57 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:21:57 -0500
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-13 18:22:00 -0500
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 13ms (Views: 12.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:22:00 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:00 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:22:00 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:00 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:22:00 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:22:00 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:00 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:00 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:00 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:00 -0500
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-06-13 18:22:19 -0500
+Processing by UsersController#index as HTML
+  [1m[36mEvent Load (1.2ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  Rendered users/index.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 29ms (Views: 24.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:22:19 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:22:19 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:19 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:22:19 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:19 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:22:19 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:19 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:19 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:19 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:22:19 -0500
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-06-13 18:23:17 -0500
+Processing by UsersController#index as HTML
+  [1m[35mEvent Load (0.6ms)[0m  SELECT "events".* FROM "events"
+  Rendered users/index.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 65ms (Views: 63.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:17 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:17 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:17 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:17 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:17 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:17 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:17 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:17 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:17 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:17 -0500
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-06-13 18:23:31 -0500
+Processing by UsersController#index as HTML
+  [1m[36mEvent Load (0.6ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  Rendered users/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 20ms (Views: 18.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:31 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:31 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:31 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:31 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:31 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:31 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:31 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:31 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:31 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:31 -0500
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-06-13 18:23:54 -0500
+Processing by UsersController#index as HTML
+  [1m[35mEvent Load (0.6ms)[0m  SELECT "events".* FROM "events"
+  Rendered users/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:54 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:54 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:54 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:23:54 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:54 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:54 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:54 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:54 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:54 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:23:54 -0500
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-06-13 18:24:11 -0500
+Processing by UsersController#index as HTML
+  [1m[36mEvent Load (0.6ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  Rendered users/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:12 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:12 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:12 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:12 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:12 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:12 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:12 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:12 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:12 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:12 -0500
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-06-13 18:24:23 -0500
+Processing by UsersController#index as HTML
+  [1m[35mEvent Load (0.6ms)[0m  SELECT "events".* FROM "events"
+  Rendered users/index.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 20ms (Views: 18.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:23 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:23 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:23 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:23 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:23 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:23 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:23 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:23 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:23 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:23 -0500
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+Processing by UsersController#index as HTML
+  [1m[36mEvent Load (0.6ms)[0m  [1mSELECT "events".* FROM "events"[0m
+  Rendered users/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/events.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+
+
+Started GET "/assets/user.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+
+
+Started GET "/assets/events.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+
+
+Started GET "/assets/user.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-13 18:24:59 -0500
+>>>>>>> master

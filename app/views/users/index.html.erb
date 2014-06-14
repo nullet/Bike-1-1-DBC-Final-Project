@@ -36,13 +36,29 @@
   	service.nearbySearch(request, callback);
     
     createMarker(userLatLng, "DBC");
+
+    <%@events.each do |event|%>
+      <%if event.created_at > 1.hour.ago && event.active == true%>
+        var map_event = new google.maps.LatLng(<%=event.latitude%>, <%=event.longitude%>)
+        createMarker(map_event, "test");
+      <%end%>
+    <%end%>
   }
 
   function createMarker(location, content) {
+    //  var image = {
+    //   url: '../../assets/images/bike_sign.png',
+    //   size: new google.maps.Size(20, 32),
+    //   origin: new google.maps.Point(0,0),
+    //   anchor: new google.maps.Point(0, 32)
+    // };
+
 	  // var placeLoc = place.geometry.location;
 	  var marker = new google.maps.Marker({
 	    map: map,
-	    position: location
+	    position: location,
+      // icon: image
+
 	    // position: place.geometry.location
 	  });
 
