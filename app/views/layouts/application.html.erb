@@ -7,11 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% #render 'user/nav' %>
-
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+
 <%= yield %>
 
 </body>
 </html>
+
+<!--
+route to app after login, route to profile after signup -->
