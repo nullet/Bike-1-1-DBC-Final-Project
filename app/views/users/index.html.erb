@@ -1,7 +1,4 @@
-<%= render 'users/nav' %>
-
 <h1>Welcome to Bike-1-1</h1>
-
 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
@@ -38,7 +35,7 @@
     createMarker(userLatLng, "DBC");
 
     <%@events.each do |event|%>
-      <%if event.created_at > 1.hour.ago && event.active == true%>
+      <%if event.created_at > 3.hour.ago && event.active == true%>
         var map_event = new google.maps.LatLng(<%=event.latitude%>, <%=event.longitude%>)
         createMarker(map_event, "test");
       <%end%>
@@ -69,10 +66,20 @@
 
 	}
 
+
   function callback(results, status) {
 	  if (status == google.maps.places.PlacesServiceStatus.OK) {
 	    for (var i = 0; i < results.length; i++) {
-	      createMarker(results[i].geometry.location, results[i].name);
+        var open,
+            place = results[i]
+        if (place.opening_hours.open_now){open = "Currently Open"}
+        else {open = "Currently Closed"}
+
+        var content = '<div class="bike_shop">'+'</div>'+
+      '<h3 id="firstHeading">' + place.name + '</h3>'+
+      '<div id="bodyContent">'+ '<p>' + open + '</p>' + '<p>' + place.price_level + '</p>' + '</div>'
+
+	      createMarker(place.geometry.location, content);
 	    }
 	  }
 	}
@@ -80,5 +87,7 @@
 
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
 
 <div id="map-canvas"/>
