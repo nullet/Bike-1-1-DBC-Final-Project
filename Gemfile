@@ -29,6 +29,9 @@ gem 'spring',        group: :development
 # User auth suite
 # gem 'devise'
 
+# Geocoder
+gem 'geocoder'
+
 # Add Coveralls to project
 gem 'coveralls', require: false
 

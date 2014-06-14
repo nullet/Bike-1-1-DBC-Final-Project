@@ -1,0 +1,83 @@
+<h1>Welcome to Bike-1-1</h1>
+
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+<style type="text/css">
+  html { height: 80% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map-canvas { height: 100% }
+</style>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+
+
+<script type="text/javascript">
+  var map,
+  		infowindow;
+
+  function initialize() {
+  	var userLatLng = new google.maps.LatLng(41.889616, -87.637211)
+
+  	map = new google.maps.Map(document.getElementById( "map-canvas"), {
+      center: userLatLng, // replace with user lat & user long
+      zoom: 16
+    });
+
+    var request = {
+    	location: userLatLng,
+    	radius: 5000,
+    	keyword: "bike shops"
+    }
+    infowindow = new google.maps.InfoWindow();
+  	var service = new google.maps.places.PlacesService(map);
+  	service.nearbySearch(request, callback);
+    
+    createMarker(userLatLng, "DBC");
+
+    <%@events.each do |event|%>
+      <%if event.created_at > 1.hour.ago && event.active == true%>
+        var map_event = new google.maps.LatLng(<%=event.latitude%>, <%=event.longitude%>)
+        createMarker(map_event, "test");
+      <%end%>
+    <%end%>
+  }
+
+  function createMarker(location, content) {
+    //  var image = {
+    //   url: '../../assets/images/bike_sign.png',
+    //   size: new google.maps.Size(20, 32),
+    //   origin: new google.maps.Point(0,0),
+    //   anchor: new google.maps.Point(0, 32)
+    // };
+
+	  // var placeLoc = place.geometry.location;
+	  var marker = new google.maps.Marker({
+	    map: map,
+	    position: location,
+      // icon: image
+
+	    // position: place.geometry.location
+	  });
+
+  	google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.setContent(content);
+	    infowindow.open(map, this);
+	  });
+
+	}
+
+  function callback(results, status) {
+	  if (status == google.maps.places.PlacesServiceStatus.OK) {
+	    for (var i = 0; i < results.length; i++) {
+	      createMarker(results[i].geometry.location, results[i].name);
+	    }
+	  }
+	}
+
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+
+<div id="map-canvas"/>
