@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :events
   resources :users
   get '/dashboard' => 'dashboard#index'
+  get '/dashboard/json' => 'dashboard#json'
 end
