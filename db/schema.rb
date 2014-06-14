@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140613204008) do
   create_table "events", force: true do |t|
     t.integer  "requester_id"
     t.integer  "responder_id"
+    t.text     "request_text"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "active"
