@@ -36,10 +36,13 @@
     
     createMarker(userLatLng, "DBC");
 
+
+
     <% @events.each do |event| %>
-      <% if event.created_at > 3.hour.ago && event.active == true %>
+      <% if event.created_at < 1.minute.ago && event.active == true %>
         var map_event = new google.maps.LatLng(<%= event.latitude %>, <%= event.longitude %>)
-        createMarker(map_event, "test");
+
+        createMarker(map_event, "<h3><%= event.requester.first_name %></h3><p>Karma Points: <%= event.requester.karma_count %></p><p><%= event.request_text %></p>");
       <%end%>
     <%end%>
   }
@@ -77,11 +80,11 @@
         if (place.opening_hours.open_now){open = "Currently Open"}
         else {open = "Currently Closed"}
 
-      //   var content = '<div class="bike_shop">'+'</div>'+
-      // '<h3 id="firstHeading">' + place.name + '</h3>'+
-      // '<div id="bodyContent">'+ '<p>' + open + '</p>' + '<p>' + place.price_level + '</p>' + '</div>'
+        var content = '<div class="bike_shop">'+'</div>'+
+      '<h3 id="firstHeading">' + place.name + '</h3>'+
+      '<div id="bodyContent">'+ '<p>' + open + '</p>' + '<p>' + place.price_level + '</p>' + '</div>'
 
-        createMarker(place.geometry.location, "test");
+        createMarker(place.geometry.location, content);
       }
     }
   }
