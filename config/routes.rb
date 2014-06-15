@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   resources :events
   resources :users
   get '/dashboard' => 'dashboard#index'
+
+  # Mobile App
+  resources :phones
 end
