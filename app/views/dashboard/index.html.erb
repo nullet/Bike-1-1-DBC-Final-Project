@@ -56,9 +56,13 @@
     // };
 
     // var placeLoc = place.geometry.location;
+    var image = { 
+                  url: '/assets/bike.png',
+                  scaledSize: new google.maps.Size(25, 25)};
     var marker = new google.maps.Marker({
       map: map,
-      position: location
+      position: location,
+      icon: image
       // icon: image
 
       // position: place.geometry.location
