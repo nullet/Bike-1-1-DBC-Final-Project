@@ -73,7 +73,7 @@ users = [tom, paige, robb, nate, jared]
 		latitude: lat,
 		longitude: long,
 		active: true,
-		request_text: "OMG my bike like broke and now I'm stuck. Please bring me a 12 in. tire."
+		request_text: rand(100).to_s
 	)
 
 end
