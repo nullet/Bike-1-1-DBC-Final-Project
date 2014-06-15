@@ -69,10 +69,11 @@ users = [tom, paige, robb, nate, jared]
 	long = -87.637 - rand.round(6) / 5
 
 	Event.create!(requester_id: requester, 
-		responder_id: responder,
+		#responder_id: responder,
 		latitude: lat,
 		longitude: long,
-		active: true 
+		active: true,
+		request_text: "OMG my bike like broke and now I'm stuck. Please bring me a 12 in. tire."
 	)
 
 end
