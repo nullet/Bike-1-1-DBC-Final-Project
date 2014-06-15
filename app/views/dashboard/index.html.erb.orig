@@ -83,8 +83,13 @@
 
     var marker = new google.maps.Marker({
       map: map,
+<<<<<<< HEAD
+      position: location
+      // icon: image
+=======
       position: location,
       icon: image
+>>>>>>> 4fb84a0e7ff7a7f77cdb7682f6f769c9121d6db7
       // position: place.geometry.location
     });
 
