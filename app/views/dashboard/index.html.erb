@@ -56,11 +56,15 @@
     // };
 
     // var placeLoc = place.geometry.location;
+    var image = { 
+                  url: '/assets/bike_sign.png',
+                  scaledSize: new google.maps.Size(25, 25)
+    };
+
     var marker = new google.maps.Marker({
       map: map,
-      position: location
-      // icon: image
-
+      position: location,
+      icon: image
       // position: place.geometry.location
     });
 
