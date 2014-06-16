@@ -60,7 +60,7 @@ jared = User.create!(first_name: 'jared',
 
 users = [tom, paige, robb, nate, jared]
 
-50.times do
+5.times do
 	users = [tom, paige, robb, nate, jared].shuffle
 
 	requester = users.pop.id
