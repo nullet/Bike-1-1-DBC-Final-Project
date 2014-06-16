@@ -2,7 +2,10 @@ var dispatcher = new WebSocketRails(window.location.host + '/websocket');
 var channel = dispatcher.subscribe('request');
 
 channel.bind('new_request', function(message) {
-      console.log("wheeEe", message);
+      // console.log("wheeEe", message);
+      var event = JSON.parse( message );
+      console.log(event.location);
+      // createMarker(event.location, event.request_text);
 });
 
 // dispatcher.on_open = function(data) {
