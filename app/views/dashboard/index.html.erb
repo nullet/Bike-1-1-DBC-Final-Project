@@ -77,9 +77,9 @@
 
     // var placeLoc = place.geometry.location;
     var image = { 
-                  url: "/assets/" + color + "bike.png",
+                  url: "<%= image_path("bike.png") %>",
                   scaledSize: new google.maps.Size(25, 25)
-    };
+    };`
 // console.log(location);
     var marker = new google.maps.Marker({
       map: map,
