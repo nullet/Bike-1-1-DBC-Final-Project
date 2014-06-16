@@ -9,3 +9,21 @@
 	display: inline-block;
 	float: right;
 }*/
+
+body {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  text-align: center;
+  margin: 1em;
+/*  font: 1.6em courier;*/
+  font-weight: 700;
+  background-image: url(<%= image_path('shift_bike.jpg') %>);
+  background-repeat:no-repeat;
+/*  background-size: initial;*/
+/*  background-position: absolute;*/
+  background-position: center center;
+/*  background-attachment: fixed;
+  background-size: cover;
+  color: white;*/
+}
