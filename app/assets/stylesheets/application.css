@@ -21,7 +21,7 @@ body {
   margin: 1em;
 /*  font: 1.6em courier;*/
   font-weight: 700;
-  background-image:url('shift_bike.jpg');
+  background-image:url('<%= image_path( 'bike.png') %>');
   background-repeat:no-repeat;
 /*  background-size: initial;*/
 /*  background-position: absolute;*/
