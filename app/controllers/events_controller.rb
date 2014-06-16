@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   # GET /events
   # GET /events.json
@@ -30,11 +30,11 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(request_text: params["text "])
     @event.requester_id = (1 + rand(4))
     @event.active = true
-    # @event.latitude = 41.880654 # will need to come in through phone
-    # @event.longitude = -87.634252 # will need to come in through phone
+    @event.latitude = 41.88988 + (rand() / 100) # will need to come in through phone
+    @event.longitude = -87.637017 - (rand() / 100) # will need to come in through phone
     # @event.request_text = "Hey" # will need to comin in through phone
 
     respond_to do |format|
