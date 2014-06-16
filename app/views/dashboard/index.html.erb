@@ -80,7 +80,7 @@
                   url: "/assets/" + color + "bike.png",
                   scaledSize: new google.maps.Size(25, 25)
     };
-
+// console.log(location);
     var marker = new google.maps.Marker({
       map: map,
       position: location,
@@ -101,8 +101,8 @@
       for (var i = 0; i < results.length; i++) {
         var open,
             place = results[i]
-        if (place.opening_hours.open_now){open = "Currently Open"}
-        else {open = "Currently Closed"}
+        // if (place.opening_hours.open_now){open = "Currently Open"}
+        // else {open = "Currently Closed"}
 
         var content = '<div class="bike_shop">' +
       '<h3 id="firstHeading">' + place.name + '</h3>'+
