@@ -54,7 +54,7 @@
     };
     <% @events.each do |event| %>
       <% @id = event.id %>
-      <% if event.created_at < 1.minute.ago && event.active == true %>
+      <% if event.created_at > 1.minute.ago && event.active == true %>
         var map_event = new google.maps.LatLng(<%= event.latitude %>, <%= event.longitude %>)
       var map_event = new google.maps.LatLng(<%= event.latitude %>, <%= event.longitude %>)
 
@@ -141,7 +141,7 @@ channel.bind('new_request', function(message) {
       // console.log(text);
       // console.log(map_event);
       var image = { 
-                  url: "<%= image_path( 'fire.png' ) %>",
+                  url: "<%= image_path( 'bike_sign.png' ) %>",
                   scaledSize: new google.maps.Size(35, 35)
     };
       createMarker(map_event, text, image);
