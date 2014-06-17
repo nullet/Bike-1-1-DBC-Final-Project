@@ -33,8 +33,10 @@ gem 'spring',        group: :development
 gem 'geocoder'
 
 # Websockets
-
 gem 'websocket-rails'
+
+# Thin ws
+gem 'thin'
 
 # Add Coveralls to project
 gem 'coveralls', require: false
