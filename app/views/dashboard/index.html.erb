@@ -35,8 +35,8 @@
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
     var image = { 
-                  url: "<%= image_path( 'godzilla.png' ) %>",
-                  scaledSize: new google.maps.Size(85, 65)
+                  url: "<%= image_path( 'home_base.png' ) %>",
+                  scaledSize: new google.maps.Size(25, 25)
     };
     
     // Creates Marker Text for Current User Pin
@@ -53,11 +53,9 @@
                   scaledSize: new google.maps.Size(25, 25)
     };
     <% @events.each do |event| %>
-      <% if event.created_at < 1.minute.ago && event.active == true %>
-        var map_event = new google.maps.LatLng(<%= event.latitude %>, <%= event.longitude %>)
+      var map_event = new google.maps.LatLng(<%= event.latitude %>, <%= event.longitude %>)
 
-        createMarker(map_event, "<h3><%= event.requester.first_name %></h3><p>Karma Points: <%= event.requester.karma_count %></p><p><%= event.request_text %></p>", image);
-      <%end%>
+      createMarker(map_event, "<h3><%= event.requester.first_name %></h3><p>Karma Points: <%= event.requester.karma_count %></p><p><%= event.request_text %></p>", image);
     <%end%>
 
     // // Re-center Map:
