@@ -32,6 +32,9 @@ gem 'spring',        group: :development
 # Geocoder
 gem 'geocoder'
 
+# Websockets
+gem 'websocket-rails'
+
 # Add Coveralls to project
 gem 'coveralls', require: false
 
