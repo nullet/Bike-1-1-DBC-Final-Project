@@ -126,10 +126,10 @@ channel.bind('new_request', function(message) {
       var event = JSON.parse( message );
       var latitude = event.location.latitude;
       var longitude = event.location.longitude;
-      var text = event.request_text
+      var text = event.location.request_text
       var map_event = new google.maps.LatLng(latitude,longitude)
-      // console.log(latitude);
-      // console.log(text);
+      console.log(latitude);
+      console.log(text);
       // console.log(map_event);
       createMarker(map_event, text);
 }, 'json');
