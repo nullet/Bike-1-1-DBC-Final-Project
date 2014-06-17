@@ -33,7 +33,6 @@ gem 'spring',        group: :development
 gem 'geocoder'
 
 # Websockets
-
 gem 'websocket-rails'
 
 # Add Coveralls to project
