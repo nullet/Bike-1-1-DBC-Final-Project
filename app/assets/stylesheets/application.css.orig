@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+<<<<<<< HEAD
+
+
+
+.container {
+  height: 80px;
+  background-color: black;
+  background: rgba(1, 0, 0, 0.55);
+}
+=======
+>>>>>>> master

@@ -4,6 +4,6 @@ class DashboardController < ApplicationController
 	def index
 		@users = User.all
 		@user = current_user
-		@events = Event.all
+		@events = Event.where(active: true)
 	end
 end
