@@ -1,6 +1,9 @@
 class RequestsController < WebsocketRails::BaseController
+    before_action :authenticate_user!
+
   def create
     @event = Event.new(message)
+    @user = current_user
     # @event.requester_id = (1 + rand(4))
     # @event.active = true
     # @event.latitude = 41.880654 # will need to come in through phone
@@ -16,7 +19,8 @@ class RequestsController < WebsocketRails::BaseController
                                                                    :requester_id => @event.requester_id,
                                                                    :latitude     => @event.latitude,
                                                                    :longitude    => @event.longitude,
-                                                                   :active       => @event.active
+                                                                   :active       => @event.active,
+                                                                   :first_name   => @user.first_name
          }}.to_json)
       else
         # talk to swift team to decide what they need for the situation where it doesn't save
