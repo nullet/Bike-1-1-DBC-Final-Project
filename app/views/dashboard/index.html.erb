@@ -35,7 +35,7 @@
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
     var image = { 
-                  url: "<%= image_path( 'godzilla.png') %>",
+                  url: "<%= image_path( 'godzilla.png' ) %>",
                   scaledSize: new google.maps.Size(85, 65)
     };
     
@@ -49,7 +49,7 @@
     // Creates Markers (Pins) for All Current Events
 
     var image = { 
-                  url: "<%= image_path( 'bike_sign.png') %>",
+                  url: "<%= image_path( 'bike_sign.png' ) %>",
                   scaledSize: new google.maps.Size(25, 25)
     };
     <% @events.each do |event| %>
@@ -118,19 +118,19 @@
       '<h3 id="firstHeading">' + place.name + '</h3>'+
       '<div id="bodyContent">'+ '<p>' + open + '</p>' + '<p>Rating: ' + place.rating + '</p>' + '</p>' + '<p>Phone: ' + place.formatted_phone_number + '</p>' + '<p>Address: ' + place.formatted_address + '</p>' +'</div>'
         var image = { 
-                  url: "<%= image_path( 'bike.png') %>",
+                  url: "<%= image_path( 'repair_shop.png') %>",
                   scaledSize: new google.maps.Size(25, 25)
     };
 
-        createMarker(place.geometry.location, content, image);
+        createMarker( place.geometry.location, content, image );
       }
     }
   }
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener( window, 'load', initialize) ;
 
-var dispatcher = new WebSocketRails(window.location.host + '/websocket');
-var channel = dispatcher.subscribe('request');
+var dispatcher = new WebSocketRails( window.location.host + '/websocket' );
+var channel = dispatcher.subscribe( 'request' );
 
 channel.bind('new_request', function(message) {
       // console.log("wheeEe", message);
@@ -143,8 +143,8 @@ channel.bind('new_request', function(message) {
       // console.log(text);
       // console.log(map_event);
       var image = { 
-                  url: "<%= image_path( 'fire.png') %>",
-                  scaledSize: new google.maps.Size(25, 25)
+                  url: "<%= image_path( 'fire.png' ) %>",
+                  scaledSize: new google.maps.Size(35, 35)
     };
       createMarker(map_event, text, image);
 }, 'json');
