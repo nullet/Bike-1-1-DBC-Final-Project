@@ -56,7 +56,6 @@
       <% @id = event.id %>
       <% if event.created_at > 1.minute.ago && event.active == true %>
         var map_event = new google.maps.LatLng(<%= event.latitude %>, <%= event.longitude %>)
-      var map_event = new google.maps.LatLng(<%= event.latitude %>, <%= event.longitude %>)
 
         createMarker(map_event, "<h1>Details</h1><h3><%= event.requester.first_name %></h3><p>Karma Points: <%= event.requester.karma_count %></p><p><%= event.request_text %></p><p><a href='/events/" + <%= event.id %> + "' data-confirm='Please confirm you are on your way to help this user.' data-method='put' id='agree-to-help'>Help this User!</a></p>");
       <%end%>
