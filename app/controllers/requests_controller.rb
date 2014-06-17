@@ -3,6 +3,7 @@ class RequestsController < WebsocketRails::BaseController
 
   def create
     @event = Event.new(message)
+    @event.active = true
     @user  = current_user
     # @event.requester_id = (1 + rand(4))
     # @event.active = true
