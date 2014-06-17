@@ -23,9 +23,15 @@ paige = User.create!(first_name: 'paige',
 	last_name: 'crum',
 	phone: 2131231237, 
 	karma_count: 0, 
+<<<<<<< HEAD
+	home_base: "351 w hubbard", 
+	hb_latitude: 41.890083, 
+	hb_longitude: -87.637657, 
+=======
 	home_base: "351 w hubbard chicago il", 
 	hb_latitude: 41.889616, 
 	hb_longitude: -87.637211, 
+>>>>>>> master
 	hb_radius: 5000, 
 	email: "paige@dbc.com", 
 	password: "password")
@@ -34,8 +40,8 @@ robb = User.create!(first_name: 'robb',
 	phone: 2131231231, 
 	karma_count: 0, 
 	home_base: "351 w hubbard", 
-	hb_latitude: 41.889616, 
-	hb_longitude: -87.637211, 
+	hb_latitude: 41.890115, 
+	hb_longitude: -87.637646, 
 	hb_radius: 5000, 
 	email: "rob@dbc.com", 
 	password: "password")
@@ -62,7 +68,11 @@ jared = User.create!(first_name: 'jared',
 
 users = [tom, paige, robb, nate, jared]
 
+<<<<<<< HEAD
+5.times do
+=======
 3.times do
+>>>>>>> master
 	users = [tom, paige, robb, nate, jared].shuffle
 
 	requester = users.pop.id
@@ -75,7 +85,7 @@ users = [tom, paige, robb, nate, jared]
 		latitude: lat,
 		longitude: long,
 		active: true,
-		request_text: "OMG my bike like broke and now I'm stuck. Please bring me a 12 in. tire."
+		request_text: rand(100).to_s
 	)
 
 end

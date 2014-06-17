@@ -43,6 +43,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+<<<<<<< HEAD
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
         # format.json { render json: @event, status: 201, location: @event }
@@ -52,9 +53,11 @@ class EventsController < ApplicationController
         #                                                                     :latitude     => @event.latitude,
         #                                                                     :longitude    => @event.longitude,
         #                                                                     :active       => @event.active }}.to_json)
+=======
         format.html { redirect_to dashboard_path, notice: 'Event was successfully created.' }
         # format.json { render :show, status: :created, location: @event }
         format.json { render json: @event, status: :created, location: @event }
+>>>>>>> master
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
