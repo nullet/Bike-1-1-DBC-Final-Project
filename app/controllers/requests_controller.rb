@@ -17,11 +17,11 @@ class RequestsController < WebsocketRails::BaseController
         format.json { render :show, status: :created, location: @event }
         # format.json { render json: @event, status: 201, location: @event }
         WebsocketRails[:request].trigger('new_request', {location: { :request_text => @event.request_text,
-                                                                   :requester_id => @event.requester_id,
-                                                                   :latitude     => @event.latitude,
-                                                                   :longitude    => @event.longitude,
-                                                                   :active       => @event.active
-         }}.to_json)
+                                                                     :requester_id => @event.requester_id,
+                                                                     :latitude     => @event.latitude,
+                                                                     :longitude    => @event.longitude,
+                                                                     :active       => @event.active
+                                                                                                    }}.to_json)
       else
         # talk to swift team to decide what they need for the situation where it doesn't save
         WebsocketRails[:request].trigger('new_request', { :error => @event.errors }.to_json)
