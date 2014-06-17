@@ -129,7 +129,7 @@ channel.bind('new_request', function(message) {
       // console.log(latitude);
       // console.log(text);
       // console.log(map_event);
-      createMarker(map_event, event.request_text);
+      createMarker(map_event, text);
 }, 'json');
 
 // dispatcher.on_open = function(data) {
