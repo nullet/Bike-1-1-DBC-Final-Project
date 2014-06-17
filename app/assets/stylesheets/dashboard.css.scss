@@ -1,0 +1,56 @@
+body {
+	background-image: url('app/assets/images/hrbikepic.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#page-wrap { 
+	width: 1200px; 
+	margin: 20px auto;
+	display: block;
+}
+
+#map-canvas-container {
+	display: block;
+	display: inline-block;
+	float: left;
+	width: 800px;
+}
+
+#map-canvas {  
+	height: 650px;
+	width: 100%; 
+	display: inline-block;
+	float: left;
+	border: 1px solid black;
+}
+
+#event-detail { 
+	width: 340px; 
+	display: inline-block;
+	float: right; 
+	background: #b3ddf2; 
+	padding: 20px; 
+	height: 400px;
+}
+
+h1 { 
+	margin: 0 0 15px 0; 
+	font: bold 48px Helvetica, Arial, Sans-Serif; 
+	letter-spacing: -2px; 
+}
+
+h2 { 
+	margin: 0 0 15px 0; 
+	font: bold 32px Helvetica, Arial, Sans-Serif; 
+	letter-spacing: -1px; 
+	text-shadow: 0 1px 0px rgba(255,255,255,0.3); 
+}
+
+h3 { 
+	margin: 0 0  1px 0; 
+	font: bold 18px Helvetica, Arial, Sans-Serif; 
+	letter-spacing: -1px; 
+}

@@ -1,22 +1,27 @@
-class User < ActiveRecord::Base
+  class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  attr_accessor :event
+  
   has_many :requests, foreign_key: :requester_id, class_name: 'Event'
   has_many :responses, foreign_key: :responder_id, class_name: 'Event'
 
 	geocoded_by :home_base, :latitude => :hb_latitude, :longitude => :hb_longitude #address field for user
   after_validation :geocode
 
-  # def nearby_events
-  	# Event.nearbys(hb_radius)
-  # end
-  
+  def nearby_requests
+    # Event.where(active: true).near([self.hb_latitude, self.hb_longitude], self.hb_radius)
+    Event.where(active: true).near(self, self.hb_radius)
+  end
+
+  def distance_to(request)
+    self.distance_to(event).round(2)
+  end
+
   # def nearby_users
-  # 	help_radius = self.hb_radius
-  # 	needs_help = User.nearbys(help_radius)
-  # 	#(where User's location is within hb_radius)
+  # 	self.nearbys(self.hb_radius)
   # end 
 end
