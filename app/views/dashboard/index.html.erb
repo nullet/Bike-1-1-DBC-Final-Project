@@ -52,7 +52,8 @@
     var image = { 
                   url: "<%= image_path( 'bike_sign.png' ) %>",
                   scaledSize: new google.maps.Size(25, 25)
-    };
+                                                              };
+                                                              
     <% @events.each do |event| %>
       <% @id = event.id %>
       <% if event.created_at > 1.minute.ago && event.active == true %>
