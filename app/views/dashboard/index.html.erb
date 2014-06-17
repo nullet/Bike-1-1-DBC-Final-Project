@@ -34,20 +34,29 @@
     infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
+    var image = { 
+                  url: "<%= image_path( 'godzilla.png') %>",
+                  scaledSize: new google.maps.Size(85, 65)
+    };
     
     // Creates Marker Text for Current User Pin
-    createMarker(userLatLng, "<h3>You are here</h3>");
+    createMarker(userLatLng, "<h3>You are here</h3>", image);
 
     // Adds Bike Routes to Map -- DON'T DELETE
     // var bikeLayer = new google.maps.BicyclingLayer();
     // bikeLayer.setMap(map);
 
     // Creates Markers (Pins) for All Current Events
+
+    var image = { 
+                  url: "<%= image_path( 'bike_sign.png') %>",
+                  scaledSize: new google.maps.Size(25, 25)
+    };
     <% @events.each do |event| %>
       <% if event.created_at < 1.minute.ago && event.active == true %>
         var map_event = new google.maps.LatLng(<%= event.latitude %>, <%= event.longitude %>)
 
-        createMarker(map_event, "<h3><%= event.requester.first_name %></h3><p>Karma Points: <%= event.requester.karma_count %></p><p><%= event.request_text %></p>");
+        createMarker(map_event, "<h3><%= event.requester.first_name %></h3><p>Karma Points: <%= event.requester.karma_count %></p><p><%= event.request_text %></p>", image);
       <%end%>
     <%end%>
 
@@ -66,7 +75,7 @@
   // var image = '../../assets/images/chibluebike.png';
   
   // Creates Markers for Events (Help Requests):
-  function createMarker(location, content) {
+  function createMarker(location, content, image) {
   //    var image = 
   //     // url: 
   //     '../../assets/images/chibluebike.png'
@@ -76,10 +85,10 @@
   //   ;
 
     // var placeLoc = place.geometry.location;
-    var image = { 
-                  url: "<%= image_path( 'bike.png') %>",
-                  scaledSize: new google.maps.Size(25, 25)
-    };
+    // var image = { 
+    //               url: "<%= image_path( 'bike.png') %>",
+    //               scaledSize: new google.maps.Size(25, 25)
+    // };
 // console.log(location);
     var marker = new google.maps.Marker({
       map: map,
@@ -108,8 +117,12 @@
         var content = '<div class="bike_shop">' +
       '<h3 id="firstHeading">' + place.name + '</h3>'+
       '<div id="bodyContent">'+ '<p>' + open + '</p>' + '<p>Rating: ' + place.rating + '</p>' + '</p>' + '<p>Phone: ' + place.formatted_phone_number + '</p>' + '<p>Address: ' + place.formatted_address + '</p>' +'</div>'
+        var image = { 
+                  url: "<%= image_path( 'bike.png') %>",
+                  scaledSize: new google.maps.Size(25, 25)
+    };
 
-        createMarker(place.geometry.location, content);
+        createMarker(place.geometry.location, content, image);
       }
     }
   }
@@ -129,7 +142,11 @@ channel.bind('new_request', function(message) {
       // console.log(latitude);
       // console.log(text);
       // console.log(map_event);
-      createMarker(map_event, event.location.request_text);
+      var image = { 
+                  url: "<%= image_path( 'fire.png') %>",
+                  scaledSize: new google.maps.Size(25, 25)
+    };
+      createMarker(map_event, text, image);
 }, 'json');
 
 // dispatcher.on_open = function(data) {
