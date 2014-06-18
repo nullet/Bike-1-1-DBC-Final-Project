@@ -43,15 +43,6 @@ class EventsController < ApplicationController
         format.html { redirect_to dashboard_path, notice: 'Event was successfully created.' }
         # format.json { render :show, status: :created, location: @event }
         format.json { render json: @event, status: :created, location: @event }
-        WebsocketRails[:request].trigger('new_request', { location: { :request_text => @event.request_text,
-                                                                       :requester_id => @event.requester_id,
-                                                                       :latitude     => @event.latitude,
-                                                                       :longitude    => @event.longitude,
-                                                                       :active       => @event.active,
-                                                                       :event_id     => @event.id,
-                                                                       :first_name   => @user.first_name,
-                                                                       :karma_count  => @user.karma_count,
-                                                                                                           }}.to_json)
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -98,8 +89,4 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:requester_id, :responder_id, :latitude, :longitude, :active, :request_text, :address)
     end
-
-    # def set_user
-    #   @user = User.find(current_user)
-    # end
 end
