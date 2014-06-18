@@ -35,14 +35,28 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.requester_id = current_user.id
     @event.active = true
+<<<<<<< HEAD
     # @event.latitude = current_user.hb_latitude
     # @event.longitude = current_user.hb_longitude
     @event.requester_id = rand(1..4)
   
     @user = User.find(@event.requester_id)
+=======
+    @event.latitude = current_user.hb_latitude
+    @event.longitude = current_user.hb_longitude
+>>>>>>> master
 
     respond_to do |format|
       if @event.save
+        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.json { render :show, status: :created, location: @event }
+        # format.json { render json: @event, status: 201, location: @event }
+        # WebsocketRails[:request].trigger('new_mobile_request', {location: { :request_text => @event.request_text,
+        #                                                                     :requester_id => @event.requester_id,
+        #                                                                     :responder_id => @event.responder_id,
+        #                                                                     :latitude     => @event.latitude,
+        #                                                                     :longitude    => @event.longitude,
+        #                                                                     :active       => @event.active }}.to_json)
         format.html { redirect_to dashboard_path, notice: 'Event was successfully created.' }
         # format.json { render :show, status: :created, location: @event }
         format.json { render json: @event, status: :created, location: @event }

@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+<div class="container">
+  <%= render 'users/nav' %>
+=======
 <section><h1>Welcome to Bike-1-1</h1></section>
+>>>>>>> master
 
   <section>
     <div class='map'>
@@ -63,7 +68,14 @@
         createMarker(map_event, "<h1>Details</h1><h3><%= event.requester.first_name %></h3><p>Karma Points: <%= event.requester.karma_count %></p><p><%= event.request_text %></p><p><a href='/events/" + <%= event.id %> + "' data-confirm='Please confirm you are on your way to help this user.' data-method='put' id='agree-to-help'>Help this User!</a></p>", image);
       <%end%>
     <%end%>
-
+    // // Re-center Map:
+    // google.maps.event.addListener(map, 'center_changed', function() {
+    // // 3 seconds after the center of the map has changed, pan back to the
+    // // marker.
+    //   window.setTimeout(function() {
+    //     map.panTo(marker.getPosition());
+    //   }, 3000);
+    // });
     // Lists bikers in need of help before current_user clicks on a certain marker to view further details
     $('#event-detail').html("<h1>Bikers In Need of Help</h1>");
 
