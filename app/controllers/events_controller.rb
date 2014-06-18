@@ -1,16 +1,13 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  # before_action :set_user, only: [:update]
 
   #respond_to :html, :json
   
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where(active: true)#.where("created_at > ?", 1.minute.ago)
-
-    # json = @events.map { |e| { request: e, requester: e.requester } }
+    @events = Event.where(active: true)
 
     respond_to do |format|
       format.html { render :index }
@@ -37,27 +34,16 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    # @event.requester_id = current_user.id
+    @event.requester_id = current_user.id
     @event.active = true
-    # @event.latitude = current_user.hb_latitude
-    # @event.longitude = current_user.hb_longitude
-    @event.requester_id = rand(1..4)
-    @user = User.find(@event.requester_id)
+    @event.latitude = current_user.hb_latitude
+    @event.longitude = current_user.hb_longitude
 
     respond_to do |format|
       if @event.save
         format.html { redirect_to dashboard_path, notice: 'Event was successfully created.' }
         # format.json { render :show, status: :created, location: @event }
         format.json { render json: @event, status: :created, location: @event }
-        WebsocketRails[:request].trigger('new_request', { location: { :request_text  => @event.request_text,
-                                                                       :requester_id => @event.requester_id,
-                                                                       :latitude     => @event.latitude,
-                                                                       :longitude    => @event.longitude,
-                                                                       :active       => @event.active,
-                                                                       :event_id     => @event.id,
-                                                                       :first_name   => @user.first_name,
-                                                                       :karma_count  => @user.karma_count,
-                                                                                                           }}.to_json)
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -104,8 +90,4 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:requester_id, :responder_id, :latitude, :longitude, :active, :request_text, :address)
     end
-
-    # def set_user
-    #   @user = User.find(current_user)
-    # end
 end

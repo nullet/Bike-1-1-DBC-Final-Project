@@ -1,0 +1,26 @@
+<header class="navigation">
+  <div class="menu-wrapper">
+    <a href="/" class="logo">
+      <img src="../assets/images/logo.png" alt="">
+    </a>
+    <p class="navigation-menu-button" id="js-mobile-menu">MENU</p>
+    <div class="nav">
+      <ul id="navigation-menu">
+        <% if current_user %>
+          <li class="nav-link"><%= link_to 'Profile', user_path(current_user.id) %></li>
+          <li class="nav-link"><%= link_to 'Map', dashboard_path %></li>
+          <li class="nav-link"><%= link_to 'Karma Leaderboard', karma_path %></li>
+        <% else %>
+          <li class="nav-link"><%= link_to 'Bike-1-1', root_path %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="navigation-tools">
+      <% if current_user %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-tool' %>
+      <% else %>
+        <%= link_to 'Sign up!', new_user_registration_path, class: 'nav-tool' %> Or, <%= link_to 'Sign in', new_user_session_path, class: 'nav-tool' %> 
+      <% end %>
+    </div>
+  </div>
+</header>

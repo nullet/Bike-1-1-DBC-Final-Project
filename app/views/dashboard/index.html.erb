@@ -1,18 +1,20 @@
-<%= render 'users/nav' %>
+<section><h1>Welcome to Bike-1-1</h1></section>
 
-<h1>Welcome to Bike-1-1</h1>
+  <section>
+    <div class='map'>
+      <div id="map-canvas" style="width: 100%; height: 650px;"></div>
+    </div>
 
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+      <div id="event-detail"></div>
+  </section>
 
-<style type="text/css">
-  html { height: 80% }
-  body { height: 100%; margin: 0; padding: 0 }
-  #map-canvas { height: 100% }
-</style>
+  <label class="label-switch">
+    <input type="checkbox" />
+    <div class="checkbox"></div>
+  </label>
 
-<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
- -->
 
+<footer>
 <script type="text/javascript">
   var map, infowindow;
 
@@ -162,12 +164,4 @@ function submitToSocket(data) {
 }
 
 </script>
-
-<div style='width: 900px'>
-  <div id="map-canvas" style="width: 100%; height: 650px;"/>
-</div>
-
-<!-- <div style='width: 350px'> -->
-  <div id="event-detail" style='width: 200px'>
-  </div>
-<!-- </div> -->
+</footer>
