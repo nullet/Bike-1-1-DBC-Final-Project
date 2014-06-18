@@ -70,6 +70,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.responder_id = current_user.id
     @event.active = false
+    current_user.gain_karma
 
     respond_to do |format|
       if @event.save
