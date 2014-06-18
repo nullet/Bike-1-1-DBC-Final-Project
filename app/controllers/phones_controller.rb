@@ -32,6 +32,7 @@ class PhonesController < ApplicationController
 		@event = Event.new(request_text: params["text "], latitude: params["latitude"], longitude: params["longitude"])
 		@event.active = true
 		@event.requester_id = User.find_by_authentication_token(params["token"]).id
+		@user = User.find(event.requester_id)
 		if @event.save
 			render json: @event, status: 201, location: @event
 			#render nothing: true, status: 204, location: @event # returns empty response body
