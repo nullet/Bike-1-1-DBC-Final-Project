@@ -1,16 +1,13 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  # before_action :set_user, only: [:update]
+  # before_action :authenticate_user!
 
   #respond_to :html, :json
   
   # GET /events
   # GET /events.json
   def index
-    @events = Event.where(active: true)#.where("created_at > ?", 1.minute.ago)
-
-    # json = @events.map { |e| { request: e, requester: e.requester } }
+    @events = Event.where(active: true)
 
     respond_to do |format|
       format.html { render :index }
@@ -59,6 +56,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.responder_id = current_user.id
     @event.active = false
+    current_user.gain_karma
 
     respond_to do |format|
       if @event.save

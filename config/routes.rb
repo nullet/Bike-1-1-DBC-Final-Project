@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   resources :events
   resources :users
   get '/dashboard' => 'dashboard#index'
-  get '/current_user_lat_long' => 'users#lat_long'
-
+  
   # Mobile App
   resources :phones
 end
