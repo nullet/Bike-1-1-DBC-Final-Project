@@ -48,7 +48,7 @@ class EventsController < ApplicationController
         format.html { redirect_to dashboard_path, notice: 'Event was successfully created.' }
         # format.json { render :show, status: :created, location: @event }
         format.json { render json: @event, status: :created, location: @event }
-        WebsocketRails[:request].trigger('new_request', { location: { :request_text => @event.request_text,
+        WebsocketRails[:request].trigger('new_request', { location: { :request_text  => @event.request_text,
                                                                        :requester_id => @event.requester_id,
                                                                        :latitude     => @event.latitude,
                                                                        :longitude    => @event.longitude,
