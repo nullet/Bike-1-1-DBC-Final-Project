@@ -151,7 +151,7 @@ var channel = dispatcher.subscribe( 'request' );
 // }, 'json');
 
 channel.bind('new_moblie_request', function(message) {
-      // console.log("wheeEe", message);
+      console.log("wheeEe", message);
       var event         = JSON.parse( message );
       var latitude      = event.location.latitude;
       var longitude     = event.location.longitude;

@@ -1,4 +1,4 @@
-// var dispatcher = new WebSocketRails(window.location.host + '/websocket');
+  // var dispatcher = new WebSocketRails(window.location.host + '/websocket');
 // var channel = dispatcher.subscribe('request');
 
 // channel.bind('new_request', function(message) {
