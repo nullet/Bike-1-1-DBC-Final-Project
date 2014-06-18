@@ -41,6 +41,7 @@ class EventsController < ApplicationController
     # @event.latitude = current_user.hb_latitude
     # @event.longitude = current_user.hb_longitude
     @event.requester_id = rand(1..4)
+  
     @user = User.find(@event.requester_id)
 
     respond_to do |format|
