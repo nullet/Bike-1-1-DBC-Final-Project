@@ -36,16 +36,27 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    @event.requester_id = current_user.id
+    # @event.requester_id = current_user.id
     @event.active = true
-    @event.latitude = current_user.hb_latitude
-    @event.longitude = current_user.hb_longitude
+    # @event.latitude = current_user.hb_latitude
+    # @event.longitude = current_user.hb_longitude
+    @event.requester_id = rand(1..4)
+    @user = User.find(@event.requester_id)
 
     respond_to do |format|
       if @event.save
         format.html { redirect_to dashboard_path, notice: 'Event was successfully created.' }
         # format.json { render :show, status: :created, location: @event }
         format.json { render json: @event, status: :created, location: @event }
+        WebsocketRails[:request].trigger('new_request', { location: { :request_text => @event.request_text,
+                                                                       :requester_id => @event.requester_id,
+                                                                       :latitude     => @event.latitude,
+                                                                       :longitude    => @event.longitude,
+                                                                       :active       => @event.active,
+                                                                       :event_id     => @event.id,
+                                                                       :first_name   => @user.first_name,
+                                                                       :karma_count  => @user.karma_count,
+                                                                                                           }}.to_json)
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -89,7 +100,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:requester_id, :responder_id, :latitude, :longitude, :active, :request_text)
+      params.require(:event).permit(:requester_id, :responder_id, :latitude, :longitude, :active, :request_text, :address)
     end
 
     # def set_user
