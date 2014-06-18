@@ -1,0 +1,22 @@
+<div class='container'>
+  <section id="page-container">
+    <section id="user-header">
+      <h1>Karma Leaderboard</h1>
+    </section>
+
+    <table id='leaderboard' class='tablesorter'>
+      <tr>
+        <th>First Name</th>
+        <th>Karma</th>
+        <th>Bikers Rescued</th>
+      </tr>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to "#{user.first_name}", user_path(user.id) %></td>
+        <td><%= user.karma_count %></td>
+        <td><%= user.responses.length %></td>
+      </tr>
+      <% end %>
+    </table>
+  </section>
+</div>

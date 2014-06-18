@@ -1,16 +1,15 @@
 <div class='container'>
 
-  <% if current_user %>
-
   <section id="page-container">
-    <h1><%= @user.first_name %></h1>
-    <h3>Karma: <%= @user.karma_count %></h3>
-
+    <section id="user-header">
+      <h1><%= @user.first_name %></h1>
+      <h3>Karma Points: <%= @user.karma_count %></h3>
+    </section>
     <div class='requests'>
-      <h3>Your Help Requests</h3>
+      <h3 class="request-header">Your Help Requests</h3>
       
       <h4>Past Requests</h4>
-       <div id="table-container">
+       <div class="table-container">
           <table class="table-borders">
             <thead>
               <tr>
@@ -54,7 +53,7 @@
     </div>
 
     <div class='responses'>
-      <h3>Bikers Rescued</h3>
+      <h3 class='request-header'>Bikers Rescued</h3>
       <div id="table-container">
         <table class="table-borders">
           <thead>  
@@ -80,5 +79,4 @@
     </div>
   </section>
 
-  <% end %>
 </div>

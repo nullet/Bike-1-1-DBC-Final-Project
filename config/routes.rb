@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :events
   resources :users
   get '/dashboard' => 'dashboard#index'
+  get '/karma' => 'dashboard#karma', as: 'karma'
   
   # Mobile App
   resources :phones

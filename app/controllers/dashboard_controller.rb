@@ -5,4 +5,8 @@ class DashboardController < ApplicationController
 		@users = User.all
 		@events = current_user.nearby_requests
 	end
+
+  def karma
+    @users = User.all
+  end
 end

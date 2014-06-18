@@ -3,12 +3,21 @@ $grid-coluns: 12;
 
 #page-container {
   background-color: white;
-  opacity: 0.7;
+  opacity: .9;
   @include span-columns(6);
+  margin: 0 auto;
+}
+
+#user-header, .request-header {
+  text-align: center;
+
+  h1 {
+    text-transform: capitalize;
+  }
 }
 
 // not working
-#table-container {
+.table-container {
   background-color: white;
   opacity: 1;
 }
