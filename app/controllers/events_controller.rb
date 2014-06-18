@@ -16,6 +16,7 @@ class EventsController < ApplicationController
       format.html { render :index }
       format.json { render json: json }
     end
+
   end
 
   # GET /events/1
