@@ -21,7 +21,10 @@ class RequestsController < WebsocketRails::BaseController
                                                                        :requester_id => @event.requester_id,
                                                                        :latitude     => @event.latitude,
                                                                        :longitude    => @event.longitude,
-                                                                       :active       => @event.active
+                                                                       :active       => @event.active,
+                                                                       :event_id     => @event.id,
+                                                                       :first_name   => @user.first_name,
+                                                                       :karma_points => @user.karma_count,
                                                                                                            }}.to_json)
       else
         # talk to swift team to decide what they need for the situation where it doesn't save
