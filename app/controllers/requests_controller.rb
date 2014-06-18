@@ -15,8 +15,7 @@ class RequestsController < WebsocketRails::BaseController
       if @event.save
          @user.requests << @event
          format.html { redirect_to @event, notice: 'Event was successfully created.' }
-         format.json { render :show, status: :created, location: @event }
-         # format.json { render json: @event, status: 201, location: @event }
+         format.json { render json: @event, status: 201, location: @event }
          WebsocketRails[:request].trigger('new_request', { location: { :request_text => @event.request_text,
                                                                        :requester_id => @event.requester_id,
                                                                        :latitude     => @event.latitude,

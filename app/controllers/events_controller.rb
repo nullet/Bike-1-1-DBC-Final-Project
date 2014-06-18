@@ -62,7 +62,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to dashboard_path, notice: 'Event was successfully updated.' }
+        format.html { redirect_to dashboard_path, notice: " Please contact the requester #{@event.requester.first_name} at #{@event.requester.phone} and let them know your on the way!." }
         format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render :edit }
