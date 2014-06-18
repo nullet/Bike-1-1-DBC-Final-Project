@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   #respond_to :html, :json
   
@@ -43,6 +43,15 @@ class EventsController < ApplicationController
         format.html { redirect_to dashboard_path, notice: 'Event was successfully created.' }
         # format.json { render :show, status: :created, location: @event }
         format.json { render json: @event, status: :created, location: @event }
+        WebsocketRails[:request].trigger('new_request', { location: { :request_text => @event.request_text,
+                                                                       :requester_id => @event.requester_id,
+                                                                       :latitude     => @event.latitude,
+                                                                       :longitude    => @event.longitude,
+                                                                       :active       => @event.active,
+                                                                       :event_id     => @event.id,
+                                                                       :first_name   => @user.first_name,
+                                                                       :karma_count  => @user.karma_count,
+                                                                                                           }}.to_json)
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -60,7 +69,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to dashboard_path, notice: 'Event was successfully updated.' }
+        format.html { redirect_to dashboard_path, notice: " Please contact the requester #{@event.requester.first_name} at #{@event.requester.phone} and let them know your on the way!." }
         format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render :edit }
@@ -87,7 +96,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:requester_id, :responder_id, :latitude, :longitude, :active, :request_text)
+      params.require(:event).permit(:requester_id, :responder_id, :latitude, :longitude, :active, :request_text, :address)
     end
 
     # def set_user

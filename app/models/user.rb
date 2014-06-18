@@ -33,7 +33,6 @@ class User < ActiveRecord::Base
   def pending_requests_made
     self.requests.where(responder_id: nil)
   end
-
   # def nearby_users
   # 	self.nearbys(self.hb_radius)
   # end 
