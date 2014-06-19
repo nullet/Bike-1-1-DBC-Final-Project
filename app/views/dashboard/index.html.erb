@@ -18,8 +18,10 @@
 <script type="text/javascript">
   var map, infowindow;
 
-  function initialize() {
-    var userLatLng = new google.maps.LatLng(41.889616, -87.637211)
+  function initialize(position) {
+
+    var userLAtLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    // var userLatLng = new google.maps.LatLng(41.889616, -87.637211)
     // var userLatLng = new google.maps.LatLng(<%= @location.hb_latitude %>, <%= @location.hb_longitude %>)
 
     map = new google.maps.Map(document.getElementById( "map-canvas"), {
@@ -125,6 +127,12 @@
       }
     }
   }
+
+  if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(initialize);
+    } else {
+      error('Geo Location is not supported');
+    }
 
   google.maps.event.addDomListener( window, 'load', initialize) ;
 
