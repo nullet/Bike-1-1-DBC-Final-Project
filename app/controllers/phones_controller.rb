@@ -30,7 +30,7 @@ class PhonesController < ApplicationController
 	def create
 		@event = Event.new(request_text: params["text "], latitude: params["latitude"], longitude: params["longitude"])
 		@event.active = true
-		@event.requester_id = User.find_by_authentication_token(params["token"]).id
+		@event.requester_id = User.find_by(authentication_token: params["token"]).id
 		@user = User.find(@event.requester_id)
 		if @event.save
 			render json: @event, status: 201, location: @event
