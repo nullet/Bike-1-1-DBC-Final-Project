@@ -22,6 +22,8 @@ function geoFindMe() {
     var data = { request_text: request, latitude: latitude, longitude: longitude};
     // console.log(data);
     submitToSocket(data);
+    window.location.replace("http://localhost:3000/dashboard");
+    window.alert('Your S.O.S. has been sent!')
   };
 
   function error() {
