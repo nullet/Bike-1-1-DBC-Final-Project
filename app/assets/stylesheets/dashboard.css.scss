@@ -5,11 +5,17 @@ body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-image:url('tilt_shift_bike_black_42.jpg');
+  background-image: image-url('tilt_shift_bike_black_42.jpg');
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
   margin: 0;
+}
+
+// Flash Notice Styling 
+.notice{
+  color: red;
+  font-size: 20px;
 }
 
 h1 {
