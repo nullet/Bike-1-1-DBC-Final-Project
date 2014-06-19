@@ -8,6 +8,6 @@ class DashboardController < ApplicationController
 	end
 
   def karma
-    @users = User.all
+    @users = User.order('karma_count DESC')
   end
 end
