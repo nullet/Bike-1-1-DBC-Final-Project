@@ -9,10 +9,9 @@ class PhonesController < ApplicationController
 
 	def login
 		@user = User.find_by_email(params[:email])
-
+		puts @user
 		if @user
-			@user.valid_password?(params[:password])
-			render json: {"token" => @user.authentication_token}, status: 201
+			render json: {"token" => @user.authentication_token}, status: 201 if @user.valid_password?(params[:password])
 		else
 			render json: {"token" => "Unauthorized"}, status: 401
 		end
@@ -29,6 +28,8 @@ class PhonesController < ApplicationController
 	end
 
 	def create
+		puts "8" * 1500
+		puts params.inspect
 		@event = Event.new(request_text: params["text "], latitude: params["latitude"], longitude: params["longitude"])
 		@event.active = true
 		@event.requester_id = User.find_by_authentication_token(params["token"]).id
