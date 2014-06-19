@@ -3,10 +3,11 @@ class DashboardController < ApplicationController
 
 	def index
 		@users = User.all
-		@events = Event.where(active: true)
+		@location = current_user
+    @events = Event.all
 	end
 
   def karma
-    @users = User.all
+    @users = User.order('karma_count DESC')
   end
 end

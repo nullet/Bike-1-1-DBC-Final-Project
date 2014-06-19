@@ -13,6 +13,7 @@ class EventsController < ApplicationController
       format.html { render :index }
       format.json { render json: json }
     end
+
   end
 
   # GET /events/1
@@ -35,14 +36,33 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.requester_id = current_user.id
     @event.active = true
-    @event.latitude = current_user.hb_latitude
-    @event.longitude = current_user.hb_longitude
+    # @event.latitude = current_user.hb_latitude
+    # @event.longitude = current_user.hb_longitude
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to dashboard_path, notice: 'Event was successfully created.' }
+        format.html { redirect_to dashboard_path, notice: 'Your S.O.S. was sent.' }
         # format.json { render :show, status: :created, location: @event }
         format.json { render json: @event, status: :created, location: @event }
+        # WebsocketRails[:request].trigger('new_request', { location: { :request_text => @event.request_text,
+        #                                                                    :requester_id => @event.requester_id,
+        #                                                                    :latitude     => @event.latitude,
+        #                                                                    :longitude    => @event.longitude,
+        #                                                                    :active       => @event.active,
+        #                                                                    :event_id     => @event.id,
+        #                                                                    :first_name   => @user.first_name,
+        #                                                                    :karma_count  => @user.karma_count,
+        #                                                                                                    }}.to_json)
+# new_comment = { location: { :request_text => @event.request_text,
+#                                                                            :requester_id => @event.requester_id,
+#                                                                            :latitude     => @event.latitude,
+#                                                                            :longitude    => @event.longitude,
+#                                                                            :active       => @event.active,
+#                                                                            :event_id     => @event.id,
+#                                                                            :first_name   => @user.first_name,
+#                                                                            :karma_count  => @user.karma_count,
+#                                                                                                            }}.to_json)
+# broadcast_message :new_message, new_comment
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -60,7 +80,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to dashboard_path, notice: " Please contact the requester #{@event.requester.first_name} at #{@event.requester.phone} and let them know your on the way!." }
+        format.html { redirect_to dashboard_path, notice: " Please contact the requester #{@event.requester.first_name} at #{@event.requester.phone} and let them know your on the way!" }
         format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render :edit }
