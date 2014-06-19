@@ -84,7 +84,9 @@
       <%end%>
 
       // Lists bikers in need of help before current_user clicks on a certain marker to view further details
-      $('#event-detail').html("<div id='welcome-side-bar'><h1>Welcome, <%= current_user.first_name %>!</h1><br><h3>Map Legend</h3><br><p><img src='/assets/home_base.png' style='width:25px;height:25px;'/> = Your Current Location</p><p><img src='/assets/repair_shop.png' style='width:25px;height:25px;'/> = Nearby Bike Shop</p><p><img src='/assets/bike_sign.png' style='width:25px;height:25px;'/> = Nearby User in Need of Help</p><strong><p><a href='/events/new'>Request Help</a></strong></p></div>");
+      $('#event-detail').html("<div id='welcome-side-bar'><h1>Welcome, <%= current_user.first_name %>!</h1><br><h3>Map Legend</h3><br><p>"<%= image_path( 'home_base.png' ) %>" = Your Current Location</p><p><img src='/assets/repair_shop.png' style='width:25px;height:25px;'/> = Nearby Bike Shop</p><p><img src='/assets/bike_sign.png' style='width:25px;height:25px;'/> = Nearby User in Need of Help</p><strong><p><a href='/events/new'>Request Help</a></strong></p></div>");
+      "<%= image_path( 'bike_sign.png' ) %>"
+      // <img src='/assets/home_base.png' style='width:25px;height:25px;'/>
 
     } // end initialize()
     
