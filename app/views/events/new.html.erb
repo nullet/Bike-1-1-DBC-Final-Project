@@ -1,5 +1,47 @@
-<h1>New event</h1>
+<h1>New Request</h1>
 
-<%= render 'form' %>
+<p><textarea id="request">Enter Your Request</textarea></p>
+<div></div>
+
+<div id="location">
+<p><button>Submit Request</button></p>
+</div>
+
+<!-- <script type="text/javascript">
+  var dispatcher = new WebSocketRails( window.location.host + '/websocket' );
+  
+$(document).ready(function(){
+
+  $("#location").on("click", geoFindMe);
+
+});
+
+function geoFindMe() {
+  var latLong = $("#location");
+  var request = $('#request').val();
+ 
+  if (!navigator.geolocation){
+    latLong.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
+
+  function success(position) {
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    var data = { request_text: request, latitude: latitude, longitude: longitude};
+    // console.log(data);
+    submitToSocket(data);
+  };
+
+  function error() {
+    latLong.innerHTML = "Unable to retrieve your location";
+  };
+
+  function submitToSocket(data) {
+  dispatcher.trigger('create', data);
+  };
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+</script> -->
 
 <%= link_to 'Back', events_path %>

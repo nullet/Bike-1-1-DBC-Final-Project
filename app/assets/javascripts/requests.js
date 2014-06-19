@@ -1,33 +1,35 @@
-// var dispatcher = new WebSocketRails(window.location.host + '/websocket');
-// var channel = dispatcher.subscribe('request');
 
-// channel.bind('new_request', function(message) {
-//       // console.log("wheeEe", message);
-//       var event = JSON.parse( message );
-//       console.log(event.location);
-//       // createMarker(event.location, event.request_text);
-// });
+var dispatcher = new WebSocketRails( window.location.host + '/websocket' );
+  
+$(document).ready(function(){
 
-// // dispatcher.on_open = function(data) {
-// //   console.log('Connection has been established: ', data);
-// //   // You can trigger new server events inside this callback if you wish.
-// // }
+  $("#location").on("click", geoFindMe);
 
-// function submitToSocket(data) {
-//     dispatcher.trigger('create', data);
-// }
+});
 
-// submitToSocket("hi");
-// function deleteToSocket(id) {
-//     dispatcher.trigger('requests.destroy', id)
-// }
+function geoFindMe() {
+  var latLong = $("#location");
+  var request = $('#request').val();
+ 
+  if (!navigator.geolocation){
+    latLong.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
 
-// var dispatcher = new WebSocketRails('localhost:3000/websocket');
+  function success(position) {
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    var data = { request_text: request, latitude: latitude, longitude: longitude};
+    // console.log(data);
+    submitToSocket(data);
+  };
 
-// // subscribe to the channel
-// var channel = dispatcher.subscribe('channel_name');
+  function error() {
+    latLong.innerHTML = "Unable to retrieve your location";
+  };
 
-// // bind to a channel event
-// channel.bind('event_name', function(data) {
-//   console.log('channel event received: ' + data);
-// });
+  function submitToSocket(data) {
+  dispatcher.trigger('create', data);
+  };
+  navigator.geolocation.getCurrentPosition(success, error);
+}
