@@ -41,7 +41,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to dashboard_path, notice: 'Event was successfully created.' }
+        format.html { redirect_to dashboard_path, notice: 'Your S.O.S. was sent.' }
         # format.json { render :show, status: :created, location: @event }
         format.json { render json: @event, status: :created, location: @event }
         # WebsocketRails[:request].trigger('new_request', { location: { :request_text => @event.request_text,
@@ -80,7 +80,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to dashboard_path, notice: " Please contact the requester #{@event.requester.first_name} at #{@event.requester.phone} and let them know your on the way!." }
+        format.html { redirect_to dashboard_path, notice: " Please contact the requester #{@event.requester.first_name} at #{@event.requester.phone} and let them know your on the way!" }
         format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render :edit }

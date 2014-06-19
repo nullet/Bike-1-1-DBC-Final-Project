@@ -20,11 +20,11 @@
 
   function initialize() {
     var userLatLng = new google.maps.LatLng(41.889616, -87.637211)
-    // var userLatLng = new google.maps.LatLng(<%= current_user.hb_latitude %>, <%= current_user.hb_longitude %>)
+    // var userLatLng = new google.maps.LatLng(<%= @location.hb_latitude %>, <%= @location.hb_longitude %>)
 
     map = new google.maps.Map(document.getElementById( "map-canvas"), {
       center: userLatLng,
-      zoom: 16
+      zoom: 12
     });
 
     var request = {
