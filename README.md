@@ -1,13 +1,10 @@
-[![Build Status](https://travis-ci.org/ieatkimchi/Bike-1-1.svg?branch=master)](https://travis-ci.org/ieatkimchi/Bike-1-1)
-[![Coverage Status](https://img.shields.io/coveralls/ieatkimchi/Bike-1-1.svg)](https://coveralls.io/r/ieatkimchi/Bike-1-1)
+Bike-1-1 mobile app repo: ![https://github.com/jmdaugherty/bike-1-1](https://github.com/jmdaugherty/bike-1-1)
 
+========
 
 Bike-1-1
 
-![http://imgur.com/gxfdBPr](http://imgur.com/gxfdBPr.png)
-========
-
-Bike assistance app Bike-1-1
+![Paige Crum](https://github.com/paigecrum)
 
 
 Our mission - Lets close the feedback loop on getting bikers the help they need
