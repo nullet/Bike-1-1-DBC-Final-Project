@@ -23,7 +23,7 @@ paige = User.create!(first_name: 'paige',
 	last_name: 'crum',
 	phone: 2131231237, 
 	karma_count: 0, 
-	home_base: "351 w hubbard", 
+	home_base: "351 w hubbard chicago il", 
 	hb_latitude: 41.889616, 
 	hb_longitude: -87.637211, 
 	hb_radius: 5000, 
@@ -62,7 +62,7 @@ jared = User.create!(first_name: 'jared',
 
 users = [tom, paige, robb, nate, jared]
 
-50.times do
+3.times do
 	users = [tom, paige, robb, nate, jared].shuffle
 
 	requester = users.pop.id

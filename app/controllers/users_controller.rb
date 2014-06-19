@@ -11,9 +11,15 @@ class UsersController < ApplicationController
 	# end
 
 	def show
-		
+		@user = User.find_by_id(params[:id])
 	end
 
+	def lat_long
+		@user = current_user
+
+		render json: {latitude: @user.hb_latitude, longitude: @user.hb_longitude }
+	end
+	
 	# def create
 		# @user = User.create!(user_params)
 		# @user.karma_count = 0

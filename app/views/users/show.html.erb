@@ -1,0 +1,82 @@
+<div class='container'>
+
+  <section id="page-container">
+    <section id="user-header">
+      <h1><%= @user.first_name %></h1>
+      <h3>Karma Points: <%= @user.karma_count %></h3>
+    </section>
+    <div class='requests'>
+      <h3 class="request-header">Your Help Requests</h3>
+      
+      <h4>Past Requests</h4>
+       <div class="table-container">
+          <table class="table-borders">
+            <thead>
+              <tr>
+                <th>Cyclist Who Helped You</th>
+                <th>Date</th>
+                <th>Request</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @user.fulfilled_requests_made.each do |request| %>
+                <tr>
+                  <td><%= request.responder.first_name %></td>
+                  <td><%= request.created_at.to_date %></td>
+                  <td><%= request.request_text %></td>
+                </tr>        
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+      <h4>Pending Requests</h4>
+       <div id="table-container">
+          <table class="table-borders">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Request</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @user.pending_requests_made.each do |request| %>
+                <tr>
+                  <td><%= request.created_at.to_date %></td>
+                  <td><%= request.request_text %></td>
+                </tr>        
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+    </div>
+
+    <div class='responses'>
+      <h3 class='request-header'>Bikers Rescued</h3>
+      <div id="table-container">
+        <table class="table-borders">
+          <thead>  
+            <tr>
+              <th>Cyclist Helped</th>
+              <th>Date</th>
+              <th>Request</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @user.responses.each do |response| %>
+              <tr>
+                <td><%= response.requester.first_name %></td>
+                <td><%= response.created_at.to_date %></td>
+                <td><%= response.request_text %></td>
+                <td><%= response.address %></td>
+              </tr>        
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</div>
