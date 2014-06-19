@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
-	
+	#acts_as_token_authenticatable
+
+  # devise :invitable, :database_authenticatable,
+  #      :recoverable, :rememberable, :trackable, :validatable,
+  #      :lockable
+
 	def index
 		@users = User.all
 		@events = Event.all
@@ -19,7 +24,7 @@ class UsersController < ApplicationController
 
 		render json: {latitude: @user.hb_latitude, longitude: @user.hb_longitude }
 	end
-	
+
 	# def create
 		# @user = User.create!(user_params)
 		# @user.karma_count = 0
