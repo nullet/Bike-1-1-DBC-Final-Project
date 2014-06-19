@@ -1,25 +1,37 @@
-$max-width: 90%;
-$grid-coluns: 12;
-
-#page-container {
-  background-color: white;
-  opacity: .9;
-  @include span-columns(6);
-  margin: 0 auto;
-}
+// #profile-container {
+//   @include span-columns(8);
+//   @include shift(2); 
+// }
 
 #user-header, .request-header {
   text-align: center;
-
+  margin: 20px;
   h1 {
     text-transform: capitalize;
   }
+  h4 {
+    margin-top: 10px;
+  }
 }
 
-// not working
-.table-container {
-  background-color: white;
-  opacity: 1;
+.my-requests {
+  margin-top: 40px;
+  margin-bottom: -10px;
+}
+
+// Gravatar Styling
+#profile-photo img {
+  width: 140px;
+  border-radius: 100px;
+  margin: 20px 20px 20px 40px;
+}
+
+#profile-photo-karma img{
+  border-radius: 100px;
+}
+
+#past-requests {
+  margin-top: -9px;
 }
 
 .table-borders {
@@ -77,6 +89,7 @@ $grid-coluns: 12;
       padding: $table-padding;
       border-left: 1px solid $table-border-color;
       border-bottom: 0px;
+      font-size: 1.3em;
     }
   }
 
@@ -88,20 +101,7 @@ $grid-coluns: 12;
       border-left: 1px solid $table-border-color;
       border-top: 1px solid $table-border-color;
       border-bottom: 0px;
-
-      // button {
-      //   @include button(simple, $table-background);
-      //   margin-right: 0.5em;
-      //   display: inline-block;
-      //   width: 100%;
-      //   margin-bottom: .3em;
-      //   outline: none;
-
-      //   @include media($medium-screen) {
-      //     width: auto;
-      //     margin-bottom: 0;
-      //   }
-      // }
+      font-size: 1.25em;
     }
   }
 }
