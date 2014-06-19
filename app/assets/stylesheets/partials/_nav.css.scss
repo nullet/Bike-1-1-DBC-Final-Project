@@ -17,7 +17,7 @@ header.navigation {
   background-color: $navigation-background;
   opacity: 0.8;
   border-bottom: 1px solid darken($navigation-background, 10);
-  font-family: $sans-serif;
+  font-family: 'Open Sans', $sans-serif;
   font-size: 22px;
   height: $navigation-height;
   width: 100%;
@@ -208,9 +208,20 @@ header.navigation {
     &.nav-bar-buttons {
       margin-top: 10px;
       margin-right: -320px;
+      display: block;
       a {
         background-color: white;
         color: black;
+      }
+      #nav-grav {
+        display: inline;
+        float: left;
+      }
+      #logout-button {
+        display: inline;
+        float: right;
+        padding-left: 20px;
+        margin-left: 20px;
       }
     }
   }

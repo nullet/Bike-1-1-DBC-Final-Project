@@ -19,7 +19,7 @@
     <div class="navigation-tools nav-bar-buttons">
       <% if current_user %>
         <span id="nav-grav"><%= image_tag gravatar_url(current_user) %></span>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-tool' %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-tool', id: 'logout-button' %>
       <% else %>
           <%= link_to 'Sign up!', new_user_registration_path, class: 'nav-tool' %>
           <%= link_to 'Sign in', new_user_session_path, class: 'nav-tool' %>
