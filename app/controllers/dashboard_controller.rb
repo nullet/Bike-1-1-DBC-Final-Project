@@ -3,7 +3,8 @@ class DashboardController < ApplicationController
 	
 	def index
 		@users = User.all
-		@events = current_user.nearby_requests
+		# @events = current_user.nearby_requests
+    @events = Event.all
 	end
 
   def karma
