@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.tablesorter.min
 //= require websocket_rails/main
 

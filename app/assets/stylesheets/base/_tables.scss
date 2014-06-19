@@ -9,12 +9,15 @@ th {
   border-bottom: 1px solid darken($base-border-color, 15%);
   font-weight: bold;
   padding: ($base-line-height / 2) 0;
-  text-align: left;
+  text-align: center;
+  font-size: 1.3em;
 }
 
 td {
   border-bottom: 1px solid $base-border-color;
   padding: ($base-line-height / 2) 0;
+  font-size: 1.25em;
+  text-align: center;
 }
 
 tr, td, th {

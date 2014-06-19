@@ -16,6 +16,7 @@ select {
 label {
   font-weight: bold;
   margin-bottom: $base-line-height / 4;
+  font-size: 1.25em;
 
   &.required:after {
     content: "*";

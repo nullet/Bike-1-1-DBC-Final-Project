@@ -1,7 +1,7 @@
 <header class="navigation">
   <div class="menu-wrapper">
     <a href="/" class="logo">
-      <img src="../assets/images/logo.png" alt="">
+      <%= link_to image_tag("/assets/logo.png"), root_path, class:"logo" %>
     </a>
     <p class="navigation-menu-button" id="js-mobile-menu">MENU</p>
     <div class="nav">
@@ -15,11 +15,13 @@
         <% end %>
       </ul>
     </div>
-    <div class="navigation-tools">
+    <div class="navigation-tools nav-bar-buttons">
       <% if current_user %>
+        <span id="nav-grav"><%= image_tag gravatar_url(current_user) %></span>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-tool' %>
       <% else %>
-        <%= link_to 'Sign up!', new_user_registration_path, class: 'nav-tool' %> Or, <%= link_to 'Sign in', new_user_session_path, class: 'nav-tool' %> 
+          <%= link_to 'Sign up!', new_user_registration_path, class: 'nav-tool' %>
+          <%= link_to 'Sign in', new_user_session_path, class: 'nav-tool' %>
       <% end %>
     </div>
   </div>
