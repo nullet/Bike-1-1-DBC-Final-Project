@@ -36,6 +36,17 @@
         keyword: "bike shops"
       }
 
+<<<<<<< HEAD
+    var image = { 
+                  url: "<%= image_path( 'bike_sign.png' ) %>",
+                  scaledSize: new google.maps.Size(25, 25)
+                                                              };
+                                                              
+    <% @events.each do |event| %>
+      <% @id = event.id %>
+      <% if event.active %>
+        var map_event = new google.maps.LatLng(<%= event.latitude %>, <%= event.longitude %>)
+=======
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);
       service.nearbySearch(request, callback);
@@ -71,6 +82,7 @@
 
 
       // Creates Markers (Pins) for All Current Events
+>>>>>>> master
 
       var image = { 
                     url: "<%= image_path( 'bike_sign.png' ) %>",

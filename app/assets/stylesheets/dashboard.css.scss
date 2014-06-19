@@ -1,4 +1,5 @@
-
+$max-width: 80%;
+$grid-columns: 12;
 
 body {
   -webkit-background-size: cover;
@@ -8,9 +9,10 @@ body {
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
-  margin: 0; // remove?
+  margin: 0;
 }
 
+// Flash Notice Styling 
 .notice{
   color: red;
   font-size: 20px;
@@ -18,28 +20,42 @@ body {
 
 h1 {
   color:black;
+  font-family: 'code_lightregular';
+
+  &#welcome-header {
+    font-size: 4em;
+    // margin: 30px;
+  }
 }
 
-$max-width: 80%;
-$grid-columns: 12;
-
-@font-face { 
-  font-family: Code; 
-  font-weight: bold;
-  src: url('Code-Bold.otf');
+.page-header {
+  text-align: center;
+  h1 {
+    font-size: 3em;
+  }
+.page-header {
+  text-align: center;
+}
 }
 
-@font-face { 
-  font-family: Code;
-  font-weight: light;
-  src: url('Code-Light.otf');
-}
-
-#page-container {
-  background-color: white;
-  opacity: .2;
+.page-container {
+  background-color: #f4f4f4;
+  // opacity: 1;
   @include span-columns(6);
+  @include shift(3);
+  padding: 20px;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
+
+#welcome-page-container{
+  @include span-columns(8);
+  @include shift(2);
+  text-align: center;
+  margin: 40px;
+  padding: 40px;
+}
+
 .map { 
   @include span-columns(7); 
   margin-left: 80px;
@@ -48,14 +64,28 @@ $grid-columns: 12;
 #event-detail { 
   @include span-columns(4); 
   @include column-rule(1px solid green);
-  background-color: #d6e3ff;
+  background-color: #f4f4f4; //#d6e3ff;
   height: 650px;
   border-radius: 6px;
   text-align: center;
   padding: 30px;
 }
 
+.side-bar-content {
+  font-size: 1.5em;
+  margin: 0 auto;
+  padding: 75px;
+}
+
 // Switch
+#switch {
+  @include span-columns(4);
+  @include shift(2);
+  display: block;
+  clear: all;
+  margin: 30px;
+}
+
 .label-switch {
   $switch-width: 52px;
   $switch-padding: 2px;
@@ -134,115 +164,19 @@ $grid-columns: 12;
   }
 }
 
-// Footer
-
-.wrapper-for-content-outside-of-footer {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -4em;
+// Sortable Karma Table CSS
+#myTable thead {
+  cursor: pointer;
+  background: #c9dff0;
 }
 
-html, body {
- height: 100%;
+#myTable thead tr th.headerSortUp, #myTable thead tr th.headerSortDown {
+  background: #acc8dd;
 }
 
-.footer-2, .push {
-  height: 17em;
-
-  @include media($large-screen) {
-    height: 4em;
-  }
+#myTable thead tr th.headerSortUp span {
+  background-image: url('up-arrow.png');
 }
-
-.footer-2 {
-  $footer-background: desaturate(darken($base-accent-color, 20), 30);
-  $footer-color: white;
-  $footer-link-color: transparentize($footer-color, .6);
-  $footer-disclaimer-color: transparentize($footer-color, .6);
-
-  background: $footer-background;
-  padding: $base-line-height;
-  width: 100%;
-
-  .footer-logo {
-    margin-right: 1em;
-    margin-bottom: 1em;
-
-    @include media($large-screen) {
-      float: left;
-      margin-bottom: 0;
-    }
-  }
-
-  .footer-logo img {
-    height: 1.6em;
-  } 
-
-  ul {
-    margin-bottom: 1em;
-    @include media($large-screen) {
-      float: left;
-      margin-left: 1em;
-      margin-bottom: 0;
-    }
-  }
-
-  ul li {
-    padding-right: 1em;
-    font-weight: 800;
-
-    @include media($large-screen) {
-      display: inline;
-      text-align: left;
-    }
-  }
-
-  ul li a {
-    color: $footer-link-color;
-
-    &:hover {
-      color: transparentize($footer-color, 0);
-    }
-  }
-
-  .footer-secondary-links {
-    @include media($large-screen) {
-      float: right;
-    }
-
-    li {
-      font-size: .8em;
-      font-weight: 400;
-    }
-
-    ul.footer-social {
-      margin-top: 1em;
-
-      @include media($large-screen) {
-        float: right;
-        margin-top: 0;
-      }
-
-      li {
-        float: left;
-        font-size: 1em;
-        padding-right: .7em;
-
-        &:last-child {
-          padding-right: 0;
-        }
-      }
-
-      img {
-        opacity: .7;
-        height: 1.6em;
-        padding: 1px;
-
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
-  }
+#myTable thead tr th.headerSortDown span {
+  background-image: url('down-arrow.png');
 }
