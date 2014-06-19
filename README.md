@@ -4,7 +4,7 @@ Bike-1-1 mobile app repo: ![https://github.com/jmdaugherty/bike-1-1](https://git
 
 Bike-1-1
 
-![Paige Crum](https://github.com/paigecrum)
+[Paige Crum](https://github.com/paigecrum)
 
 
 Our mission - Lets close the feedback loop on getting bikers the help they need
