@@ -3,14 +3,15 @@ class PhonesController < ApplicationController
 
 	def index
 		@events = Event.all
-		# puts "auth_token: #{@current_user.id}"
 		render json: @events, status: 200
 	end
 
 	def login
+		puts "*" * 1000
 		@user = User.find_by_email(params[:email])
-
+		puts params[:email]
 		if @user
+			puts params[:password]
 			@user.valid_password?(params[:password])
 			render json: {"token" => @user.authentication_token}, status: 201
 		else

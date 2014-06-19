@@ -41,6 +41,8 @@ gem 'coveralls', require: false
 
 gem 'rails_12factor', group: :production
 
+gem 'simple_token_authentication'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'capybara'
