@@ -1,7 +1,7 @@
 <div class='container'>
 <section class="page-container" id="profile-container">
     <section class="page-header">
-      <h1><%= @user.first_name %></h1>
+      <h1><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h1>
       <div id='profile-photo'><%= image_tag gravatar_url(@user) %>
       <h3>Karma Points: <%= @user.karma_count %></h3>
     </section>
