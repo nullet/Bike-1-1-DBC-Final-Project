@@ -2,7 +2,7 @@ class PhonesController < ApplicationController
 	# respond_to :json
 
 	def index
-		@events = Event.all
+		@events = Event.where(active: true)
 		# puts "auth_token: #{@current_user.id}"
 		render json: @events, status: 200
 	end
