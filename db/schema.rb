@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140619153610) do
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "phone"
+    t.string   "phone"
     t.integer  "karma_count"
     t.string   "home_base"
     t.float    "hb_latitude"
