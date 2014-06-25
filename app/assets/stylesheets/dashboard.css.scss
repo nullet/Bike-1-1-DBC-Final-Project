@@ -31,10 +31,13 @@ h1 {
     font-size: 13em;
     font-family: 'Open Sans';
     font-weight: 700;
+    width: 900px;
     @include span-columns(10 of 10);
     @include shift(2);
     margin-top: -150px;
     text-shadow: 1px 1px 1px #000;
+    text-align: center;
+    @media (max-width: 1400px) { font-size: 10em;}
   }
 }
 
