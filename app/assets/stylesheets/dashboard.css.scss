@@ -28,12 +28,12 @@ h1 {
 
   &#welcome-header {
     color: white;
-    font-size: 12em;
+    font-size: 13em;
     font-family: 'Open Sans';
     font-weight: 700;
-    @include span-columns(8 of 10);
-    @include shift(3);
-    margin-top: -50px;
+    @include span-columns(10 of 10);
+    @include shift(2);
+    margin-top: -150px;
     text-shadow: 1px 1px 1px #000;
   }
 }
