@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-<h1>Welcome to Bike-1-1</h1>
-=======
-<h1>Bike-1-1</h1>
->>>>>>> master
-
-<%= link_to 'Login', new_user_session_path %>
-<%= link_to 'Sign Up!', new_user_registration_path %>
