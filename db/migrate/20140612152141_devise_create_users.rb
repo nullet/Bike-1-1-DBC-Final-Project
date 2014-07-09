@@ -3,9 +3,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       t.string  :first_name
       t.string  :last_name
-      t.integer :phone
+      t.string :phone
       t.integer :karma_count
-      t.string  :home_base
+      t.string  :home_base  
       t.float   :hb_latitude
       t.float   :hb_longitude
       t.float   :hb_radius
