@@ -13,9 +13,9 @@ class RequestsController < WebsocketRails::BaseController
 
     respond_to do |format|
       if @event.save
-         @user.requests << @event
-         format.html { redirect_to dashboard_path, notice: 'Your S.O.S. was sent.' }
-         format.json { render json: @event, status: 201, location: @event }
+         # @user.requests << @event
+         # format.html { redirect_to dashboard_path, notice: 'Your S.O.S. was sent.' }
+         # format.json { render json: @event, status: 201, location: @event }
          WebsocketRails[:request].trigger('new_request', { location: { :request_text => @event.request_text,
                                                                        :requester_id => @event.requester_id,
                                                                        :latitude     => @event.latitude,
