@@ -60,21 +60,22 @@ jared = User.create!(first_name: 'jared',
 	email: "jaredmdaugherty@gmail.com", 
 	password: "password")
 
-# users = [tom, paige, robb, nate, jared]
+users = [tom, paige, robb, nate, jared]
 
-# 3.times do
-# 	users = [tom, paige, robb, nate, jared].shuffle
+3.times do
+	users = [tom, paige, robb, nate, jared].shuffle
 
-# 	requester = users.pop.id
-# 	responder = users.pop.id
-# 	lat = 41.889 + rand.round(6) / 5
-# 	long = -87.637 - rand.round(6) / 5
+	requester = users.pop.id
+	responder = users.pop.id
+	lat = 41.889 + rand.round(6) / 5
+	long = -87.637 - rand.round(6) / 5
 
-# 	Event.create!(requester_id: requester, 
-# 		#responder_id: responder,
-# 		latitude: lat,
-# 		longitude: long,
-# 		active: true,
-# 		request_text: "OMG my bike like broke and now I'm stuck. Please bring me a 12 in. tire."
-# 	)
+	Event.create!(requester_id: requester, 
+		#responder_id: responder,
+		latitude: lat,
+		longitude: long,
+		active: true,
+		request_text: "OMG my bike like broke and now I'm stuck. Please bring me a 12 in. tire."
+	)
 
+end
