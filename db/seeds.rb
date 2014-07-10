@@ -78,4 +78,3 @@ jared = User.create!(first_name: 'jared',
 # 		request_text: "OMG my bike like broke and now I'm stuck. Please bring me a 12 in. tire."
 # 	)
 
-end
