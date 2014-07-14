@@ -36,8 +36,6 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.requester_id = current_user.id
     @event.active = true
-    # @event.latitude = current_user.hb_latitude
-    # @event.longitude = current_user.hb_longitude
 
     respond_to do |format|
       if @event.save
